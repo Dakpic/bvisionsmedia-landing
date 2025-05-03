@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Work With - BVisionsMedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Color Variables --- */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb; /* bg-gray-50 */
+            --bg-card: #ffffff;
+            --bg-input: #f9fafb; /* bg-gray-50 */
+            --bg-footer: #f3f4f6; /* bg-gray-100 */
+            --bg-header: rgba(243, 244, 246, 0.4); /* bg-gray-100/40 */
+            --bg-submenu-card: rgba(229, 231, 235, 0.3); /* bg-gray-200/30 */
+            --bg-submenu-card-hover: rgba(209, 213, 219, 0.5); /* bg-gray-300/50 */
+            --bg-mobile-menu: #f3f4f6;
+            --bg-mobile-menu-hover: #e5e7eb;
+            --bg-contact-cta: #f9fafb;
+
+            --text-primary: #374151; /* gray-700 */
+            --text-secondary: #6b7280; /* gray-500 */
+            --text-heading: #1f2937; /* gray-800 */
+            --text-input: #1f2937;
+            --text-footer: #6b7280;
+            --text-footer-link: #4b5563; /* gray-600 */
+            --text-nav-link: #4b5563; /* gray-600 */
+            --text-submenu-card: #374151;
+            --text-industry-content: #4b5563; /* gray-600 */
+
+            --border-primary: #e5e7eb; /* gray-200 */
+            --border-secondary: #d1d5db; /* gray-300 */
+            --border-header: rgba(229, 231, 235, 0.4); /* border-gray-200/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+
+            --accent-color: #05bff7;
+            --accent-hover: #04a6d9;
+
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-lg-color: rgba(0, 0, 0, 0.1);
+        }
+
+        html.dark {
+            --bg-primary: #111827; /* gray-900 */
+            --bg-secondary: #1f2937; /* gray-800 */
+            --bg-card: #1f2937; /* gray-800 */
+            --bg-input: #374151; /* gray-700 */
+            --bg-footer: #1f2937; /* gray-800 */
+            --bg-header: rgba(31, 41, 55, 0.4); /* bg-gray-800/40 */
+            --bg-submenu-card: rgba(55, 65, 81, 0.5); /* bg-gray-700/50 */
+            --bg-submenu-card-hover: rgba(75, 85, 99, 0.6); /* bg-gray-600/60 */
+            --bg-mobile-menu: #1f2937;
+            --bg-mobile-menu-hover: #374151;
+            --bg-contact-cta: #1f2937;
+
+            --text-primary: #d1d5db; /* gray-300 */
+            --text-secondary: #9ca3af; /* gray-400 */
+            --text-heading: #f9fafb; /* gray-50 */
+            --text-input: #f9fafb;
+            --text-footer: #9ca3af;
+            --text-footer-link: #d1d5db;
+            --text-nav-link: #d1d5db; /* gray-300 */
+            --text-submenu-card: #d1d5db;
+            --text-industry-content: #9ca3af; /* gray-400 */
+
+            --border-primary: #374151; /* gray-700 */
+            --border-secondary: #4b5563; /* gray-600 */
+            --border-header: rgba(55, 65, 81, 0.4); /* border-gray-700/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+
+            --accent-color: #05bff7;
+            --accent-hover: #04a6d9;
+
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --shadow-lg-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Base Styling - Uses Variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; color: var(--text-heading); }
+        .accent-color { color: var(--accent-color); }
+        .bg-accent-color { background-color: var(--accent-color); }
+        .border-accent-color { border-color: var(--accent-color); }
+        .hover\:bg-accent-hover:hover { background-color: var(--accent-hover); }
+        .hover\:text-accent-hover:hover { color: var(--accent-hover); }
+        *:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; border-radius: 2px; }
+        *:focus { outline: none; }
+        html { scroll-behavior: smooth; }
+
+        /* --- Button Base & Hover Effects --- */
+        .button-base { display: inline-block; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; cursor: pointer; position: relative; overflow: hidden; z-index: 1; }
+        .button-base:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--shadow-color); animation: breathe 1.8s infinite ease-in-out; }
+        /* Primary Button */
+        .button-primary { background-color: var(--accent-color); color: white; }
+        .button-primary::before { content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100% ); transform: skewX(-25deg); z-index: 2; animation: none; pointer-events: none; }
+        html.dark .button-primary::before { background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100% ); } /* Subtle shimmer for dark */
+        .button-primary:hover::before { animation: shimmer 1.5s infinite linear; }
+        /* Secondary Button */
+        .button-secondary { border: 1px solid var(--accent-color); color: var(--accent-color); background-color: transparent; }
+        .button-secondary:hover { background-color: var(--accent-color); color: var(--bg-primary); border-color: var(--accent-color); transform: translateY(-1px); animation: breathe-secondary 1.8s infinite ease-in-out; }
+        html.dark .button-secondary:hover { color: var(--text-heading); } /* Ensure contrast on dark */
+
+        /* --- Animations --- */
+        @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
+        @keyframes breathe { 0%, 100% { transform: translateY(-2px) scale(1); font-size: 1em; } 50% { transform: translateY(-2px) scale(1.03); font-size: 1.02em; } }
+        @keyframes breathe-secondary { 0%, 100% { transform: translateY(-1px) scale(1); font-size: 1em; } 50% { transform: translateY(-1px) scale(1.02); font-size: 1.015em; } }
+        @keyframes text-shimmer-subtle { 0% { background-position: 150% 0; } 100% { background-position: -150% 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes subtleGradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } } /* Logo slide */
+
+        /* --- Header & Navigation Styling --- */
+        /* Header container */
+        #main-header {
+            transition: min-height 0.3s ease-out;
+            min-height: 3rem; /* h-12 */
+            background-color: var(--bg-header);
+            border-color: var(--border-header);
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-lg */
+        }
+        #main-header.header-expanded {
+            min-height: 12rem; /* Approx h-48, adjust as needed */
+        }
+
+        /* Main Nav Container (<nav>) */
+        #main-nav-container {
+            transition: padding-left 0.3s ease-out, padding-right 0.3s ease-out;
+            padding-left: 0.75rem; /* Default px-3 */
+            padding-right: 0.75rem; /* Default px-3 */
+        }
+        #main-header.header-expanded #main-nav-container {
+            padding-left: 1.5rem; /* Increased px-6 */
+            padding-right: 1.5rem; /* Increased px-6 */
+        }
+        /* Nav Links */
+        .nav-link { color: var(--text-nav-link); }
+        .nav-link:hover { color: var(--accent-color); }
+
+
+        /* Desktop Nav Link Spacing */
+        #desktop-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: gap 0.3s ease-out; /* Animate gap change */
+            gap: 0.25rem; /* Default small gap */
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+             #desktop-nav-links {
+                 gap: 0.5rem; /* Default larger gap on lg */
+             }
+        }
+        /* Expanded state for nav links - uses descendant selector */
+        #main-header.header-expanded #desktop-nav-links {
+            gap: 1rem; /* Increased gap */
+        }
+         @media (min-width: 1024px) { /* lg breakpoint */
+             #main-header.header-expanded #desktop-nav-links {
+                 gap: 1.5rem; /* Further increased gap on lg */
+             }
+         }
+
+
+        /* Submenu display area inside header */
+        #submenu-display-area {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        #main-header.header-expanded #submenu-display-area {
+            max-height: 15rem; /* Allow more space */
+            opacity: 1;
+            padding-top: 0.75rem; /* pt-3 */
+            padding-bottom: 1rem; /* pb-4 */
+        }
+        /* Grid styling for submenu links (now contains cards) */
+        #submenu-display-area .submenu-grid {
+            display: grid;
+             /* grid-template-columns set dynamically by JS */
+            gap: 0.75rem; /* gap-3 */
+        }
+        /* Styling for the card link */
+        #submenu-display-area .submenu-grid .submenu-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem; /* p-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            background-color: var(--bg-submenu-card);
+            border: 1px solid transparent; /* Add transparent border for layout stability */
+            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: var(--text-submenu-card);
+            min-height: 4rem;
+        }
+        #submenu-display-area .submenu-grid .submenu-card:hover {
+            background-color: var(--bg-submenu-card-hover);
+            transform: translateY(-2px);
+            border-color: var(--border-card-hover); /* Use variable */
+            /* Text color doesn't change on hover */
+        }
+        /* Icon styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card i {
+            font-size: 1.25rem; /* text-xl */
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: var(--accent-color);
+            transition: color 0.2s ease;
+        }
+         #submenu-display-area .submenu-grid .submenu-card:hover i {
+             color: var(--accent-hover);
+         }
+
+        /* Text styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card span {
+            font-size: 0.75rem; /* text-xs */
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        /* Hide original UL submenus */
+        .main-nav .sub-menu {
+            display: none;
+        }
+
+        /* Mobile menu dropdown positioning & Styling - Opaque */
+        #mobile-menu-container {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 1rem);
+            max-width: 360px;
+            background-color: var(--bg-mobile-menu);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            z-index: 40;
+        }
+        #mobile-menu-container li a {
+             color: var(--text-primary); /* Use primary text color */
+        }
+        #mobile-menu-container li a:hover {
+             background-color: var(--bg-mobile-menu-hover);
+             color: var(--accent-color); /* Accent color on hover */
+        }
+
+        /* --- Who We Work With Page Specific Styles --- */
+        .industry-section {
+            overflow: hidden; /* Prevent image overflow issues */
+        }
+        .industry-section:nth-child(odd) {
+            background-color: var(--bg-secondary); /* Alternate background */
+        }
+        .industry-section:nth-child(even) {
+            background-color: var(--bg-primary);
+        }
+        .industry-image-container {
+            position: relative;
+            min-height: 400px; /* Ensure height for image */
+        }
+        .industry-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-out;
+        }
+        .industry-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: var(--text-industry-content); /* Use variable */
+        }
+        .industry-content h2 { color: var(--text-heading); } /* Ensure heading uses heading color */
+        .industry-content a { /* Style the button */
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .industry-content a:hover {
+             background-color: var(--accent-hover);
+        }
+
+
+        /* Modal Styles (Consistent) */
+        .modal { background-color: rgba(31, 41, 55, 0.9); } /* gray-800/90 */
+        html.dark .modal { background-color: rgba(17, 24, 39, 0.95); } /* gray-900/95 */
+        .modal-close-instruction { color: #9ca3af; } /* gray-400 */
+
+        /* --- Dark Mode Toggle --- */
+        #darkModeToggle {
+            position: fixed;
+            bottom: 1.5rem; /* bottom-6 */
+            left: 1.5rem; /* left-6 */
+            z-index: 100;
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.5rem; /* p-2 */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-md */
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        #darkModeToggle:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        #darkModeToggle .fa-sun { display: none; } /* Hide sun by default */
+        html.dark #darkModeToggle .fa-sun { display: inline-block; } /* Show sun in dark mode */
+        html.dark #darkModeToggle .fa-moon { display: none; } /* Hide moon in dark mode */
+
+        /* General Section Backgrounds/Borders */
+        .bg-white { background-color: var(--bg-primary); }
+        .bg-gray-50 { background-color: var(--bg-secondary); }
+        .border-b { border-bottom-color: var(--border-primary); }
+        .border-t { border-top-color: var(--border-primary); }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="fixed top-4 left-8 z-50 flex items-center h-12"> <a href="index.html#home" class="logo-link">
+            <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/150x48/ffffff/374151?text=Logo';">
+        </a>
+    </div>
+
+    <header id="main-header" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] lg:max-w-6xl xl:max-w-7xl backdrop-blur-md shadow-lg rounded-3xl overflow-hidden">
+        <nav id="main-nav-container" class="container mx-auto py-1 flex items-center justify-center relative h-12"> <div class="hidden md:flex">
+                <ul id="desktop-nav-links" class="main-nav flex items-center">
+                    <li><a href="index.html#home" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Home</a></li>
+                    <li><a href="portfolio.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 inline-flex items-center whitespace-nowrap">
+                            Media Services <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu"> <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 inline-flex items-center whitespace-nowrap">
+                            Who We Work With <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu"> <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li>
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="md:hidden absolute right-1 top-1/2 -translate-y-1/2">
+                <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1.5">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div id="submenu-display-area">
+            </div>
+
+         <div class="md:hidden hidden" id="mobile-menu-container">
+            <ul class="px-4 pt-2 pb-4 space-y-1">
+                 <li><a href="index.html#home" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Home</a></li>
+                <li><a href="portfolio.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Portfolio</a></li>
+                <li><a href="media-services.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Media Services</a></li>
+                <li><a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">About Us</a></li>
+                <li><a href="who-we-work-with.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Who We Work With</a></li>
+                <li><a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Contact Us</a></li>
+                 <li><a href="contact.html" class="mt-3 block w-full text-center button-primary button-base text-white px-4 py-2.5 rounded-full text-base font-semibold transition duration-300 button-hover-effect">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="fixed top-4 right-8 z-50 hidden md:flex items-center h-12"> <a href="contact.html" class="header-cta-button button-primary button-base text-white px-3 rounded-full text-xs lg:text-sm font-semibold button-hover-effect shadow-md whitespace-nowrap h-full flex items-center">Tell Your Story</a>
+    </div>
+
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <main>
+        <section class="bg-primary py-16 md:py-24 text-center border-b mt-20">
+            <div class="container mx-auto px-6">
+                 <span class="text-sm font-semibold text-accent-color uppercase tracking-wider">Our Expertise</span>
+                <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Tailored Media for Every Sector</h1>
+                <p class="text-lg text-primary max-w-3xl mx-auto">We understand the unique visual language of different industries. Explore how we can elevate your story.</p>
+            </div>
+        </section>
+
+        <div id="industries-list">
+            <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container md:order-last"> <img src="https://placehold.co/800x600/f0f9ff/374151?text=Elegant+Wedding+Moment" alt="Wedding Videography" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20 md:order-first"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Weddings</h2>
+                            <p class="mb-6 leading-relaxed">Your wedding day is a collection of priceless moments. We specialize in capturing the laughter, tears, and joy through cinematic videography and timeless photography, creating heirlooms you'll cherish forever.</p>
+                            <div class="mt-4">
+                                <a href="weddings.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">Explore Wedding Packages</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container"> <img src="https://placehold.co/800x600/ffffff/374151?text=Dynamic+Event+Highlights" alt="Event Coverage" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Events</h2>
+                            <p class="mb-6 leading-relaxed">From high-energy festivals to sophisticated corporate galas, we provide dynamic photo and video coverage that captures the atmosphere, key speakers, and attendee engagement, perfect for promotion and archival.</p>
+                             <div class="mt-4">
+                                <a href="events.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">See Event Coverage Options</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container md:order-last"> <img src="https://placehold.co/800x600/f0f9ff/374151?text=Stunning+Property+View" alt="Real Estate Photography" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20 md:order-first"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Real Estate</h2>
+                            <p class="mb-6 leading-relaxed">Make your listings stand out. We offer premium photography, immersive video tours, and captivating aerial shots that highlight property features and attract serious buyers faster.</p>
+                             <div class="mt-4">
+                                <a href="real-estate.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">View Real Estate Media</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container"> <img src="https://placehold.co/800x600/ffffff/374151?text=Professional+Corporate+Setting" alt="Corporate Video Production" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Corporate</h2>
+                            <p class="mb-6 leading-relaxed">Enhance your brand image and communication with polished corporate videos. We produce compelling brand stories, training materials, executive interviews, and event documentation.</p>
+                             <div class="mt-4">
+                                <a href="corporate.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">Discover Corporate Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container md:order-last"> <img src="https://placehold.co/800x600/f0f9ff/374151?text=Construction+Project+Progress" alt="Construction Site Documentation" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20 md:order-first"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Construction</h2>
+                            <p class="mb-6 leading-relaxed">Visualize project milestones and site progress effectively. We provide high-resolution site photography, detailed drone mapping, and engaging time-lapse videos for documentation and marketing.</p>
+                             <div class="mt-4">
+                                <a href="construction.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">See Construction Services</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="industry-section"> <div class="container mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                        <div class="industry-image-container"> <img src="https://placehold.co/800x600/ffffff/374151?text=Modern+Agriculture+Technology" alt="Agriculture Drone Footage" class="industry-image">
+                        </div>
+                        <div class="industry-content p-8 md:p-16 lg:p-20"> <h2 class="text-3xl lg:text-4xl font-bold mb-4">Agriculture</h2>
+                            <p class="mb-6 leading-relaxed">From field to market, we help tell the story of modern agriculture. Utilize our drone services for crop monitoring or showcase your operations and commitment to quality through compelling visuals.</p>
+                             <div class="mt-4">
+                                <a href="agriculture.html" class="inline-block button-primary button-base text-white px-6 py-3 rounded-full text-sm font-semibold transition duration-300 button-hover-effect">Explore Agriculture Media</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section id="contact-cta" class="bg-secondary py-16 md:py-20 border-t">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Your Industry Not Listed?</h2>
+                <p class="text-lg text-primary mb-8 max-w-xl mx-auto">Our skills are versatile. Let's discuss how BVisionsMedia can create impactful visuals for your specific field.</p>
+                <a href="contact.html" class="inline-block button-primary button-base text-white px-8 py-3 rounded-full text-lg font-semibold button-hover-effect">Start the Conversation</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 border-t">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>© 2025 BVisionsMedia. All rights reserved.</p>
+             <div class="mt-4 space-x-4">
+                 <a href="#" class="text-footer-link hover:text-primary transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="text-footer-link hover:text-primary transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-footer-link hover:text-primary transition duration-300"><i class="fab fa-vimeo-v text-xl"></i></a>
+                 <a href="#" class="text-footer-link hover:text-primary transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+            </div>
+             <div class="mt-3 text-xs">
+                 <a href="#" class="hover:text-primary mx-2">Privacy Policy</a> |
+                 <a href="#" class="hover:text-primary mx-2">Terms of Service</a>
+             </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-player-wrapper rounded-lg">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container'); // Use the new ID
+        if (mobileMenuButton && mobileMenuContainer) {
+            mobileMenuButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const isHidden = mobileMenuContainer.classList.toggle('hidden');
+                mobileMenuButton.innerHTML = isHidden
+                   ? '<i class="fas fa-bars text-lg"></i>'
+                   : '<i class="fas fa-times text-lg"></i>';
+            });
+
+            // Close mobile menu if clicking outside
+            document.addEventListener('click', (event) => {
+                const header = mobileMenuButton.closest('header');
+                if (!mobileMenuContainer.classList.contains('hidden') && header && !header.contains(event.target)) {
+                    mobileMenuContainer.classList.add('hidden');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                }
+            });
+
+            // Close mobile menu when a link inside it is clicked
+            mobileMenuContainer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuContainer.classList.add('hidden');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                });
+            });
+        }
+
+        // --- Expanding Header Logic ---
+        const mainHeader = document.getElementById('main-header');
+        const submenuDisplayArea = document.getElementById('submenu-display-area');
+        const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children');
+        const desktopNavLinks = document.getElementById('desktop-nav-links'); // Get the UL
+        let closeHeaderTimeout; // Timer for closing the header
+
+        // Icon mapping (Ensure this covers all submenu items)
+        const iconMap = {
+            'photography-services.html': 'fa-camera-retro',
+            'video-production-services.html': 'fa-video',
+            'short-form-videos.html': 'fa-mobile-alt',
+            'drone-video-photography.html': 'fa-helicopter',
+            'social-media-management.html': 'fa-share-alt',
+            'strategic-media-consulting.html': 'fa-lightbulb',
+            'brand-storytelling.html': 'fa-book-open',
+            'digital-ads.html': 'fa-bullhorn',
+            'weddings.html': 'fa-ring',
+            'events.html': 'fa-calendar-alt',
+            'real-estate.html': 'fa-home',
+            'corporate.html': 'fa-building',
+            'construction.html': 'fa-hard-hat',
+            'agriculture.html': 'fa-tractor'
+        };
+
+
+        if (mainHeader && submenuDisplayArea && menuItemsWithChildren.length > 0 && desktopNavLinks) { // Check desktopNavLinks exists
+
+            // Function to open/populate the submenu area
+            const openSubmenu = (menuItem) => {
+                clearTimeout(closeHeaderTimeout); // Cancel any pending close timer
+                mainHeader.classList.add('header-expanded'); // Expand header height
+
+                const subMenuUl = menuItem.querySelector('.sub-menu');
+                if (!subMenuUl) return; // Should not happen, but safety check
+
+                const links = subMenuUl.querySelectorAll('a');
+                submenuDisplayArea.innerHTML = ''; // Clear previous content
+
+                if (links.length > 0) {
+                    const gridContainer = document.createElement('div');
+                    // Determine grid columns based on parent link
+                    const parentLinkHref = menuItem.querySelector('a.nav-link').getAttribute('href');
+                    const gridColsClass = parentLinkHref === 'who-we-work-with.html' ? 'grid-cols-3' : 'grid-cols-4';
+                    gridContainer.className = `submenu-grid ${gridColsClass}`; // Apply grid styles
+
+                    links.forEach(link => {
+                        const linkHref = link.getAttribute('href');
+                        const linkText = link.textContent;
+                        const iconClass = iconMap[linkHref] || 'fa-question-circle'; // Default icon
+
+                        // Create the card structure within the link
+                        const cardLink = document.createElement('a');
+                        cardLink.href = linkHref;
+                        cardLink.className = 'submenu-card'; // Apply card styles
+
+                        const iconElement = document.createElement('i');
+                        iconElement.className = `fas ${iconClass}`; // Add Font Awesome classes
+
+                        const textElement = document.createElement('span');
+                        textElement.textContent = linkText;
+
+                        cardLink.appendChild(iconElement);
+                        cardLink.appendChild(textElement);
+
+                        gridContainer.appendChild(cardLink);
+                    });
+                    submenuDisplayArea.appendChild(gridContainer);
+                }
+            };
+
+            // Function to start the closing process
+            const startCloseSubmenu = () => {
+                clearTimeout(closeHeaderTimeout); // Clear any existing timer
+                closeHeaderTimeout = setTimeout(() => {
+                    mainHeader.classList.remove('header-expanded');
+                     // Optionally clear the display area after transition
+                     // setTimeout(() => { submenuDisplayArea.innerHTML = ''; }, 300); // Delay clearing to allow fade out
+                }, 200); // Delay closing slightly (e.g., 200ms)
+            };
+
+            // Add listeners to menu items
+            menuItemsWithChildren.forEach(item => {
+                const triggerLink = item.querySelector('a.nav-link'); // Target the main link
+                if (triggerLink) {
+                    triggerLink.addEventListener('mouseenter', () => {
+                        openSubmenu(item);
+                    });
+                    // No mouseleave needed on individual items, handled by header mouseleave
+                }
+            });
+
+            // Add listeners to the header itself
+            mainHeader.addEventListener('mouseenter', () => {
+                clearTimeout(closeHeaderTimeout); // Cancel closing if mouse re-enters
+            });
+
+            mainHeader.addEventListener('mouseleave', () => {
+                startCloseSubmenu(); // Start the timer to close
+            });
+        }
+
+
+        // --- Modal Handling ---
+        const videoModal = document.getElementById('videoModal');
+        // Portfolio items might not exist on this page, check if needed
+        // const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+
+        function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none';
+                videoModal.classList.remove('flex');
+                if (modalPlayerContainer) {
+                     const iframe = modalPlayerContainer.querySelector('iframe');
+                    if (iframe) iframe.src = '';
+                    modalPlayerContainer.innerHTML = '';
+                }
+            }
+            // Add logic to close photo lightbox if implemented
+        }
+
+        // Add listeners to close the modal (if used)
+        if (videoModal) {
+            videoModal.addEventListener('click', (event) => { if (event.target === videoModal) closeModal(); });
+             document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+        }
+
+        // --- Scroll Animation & Dark Mode Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Animation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                         // Optional: Remove active class to re-animate on scroll up
+                         // entry.target.classList.remove('active');
+                    }
+                });
+            };
+
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+            const targets = document.querySelectorAll('.scroll-animate');
+            targets.forEach((target, index) => {
+                 if (target.closest('.scroll-animate-stagger')) {
+                     target.style.setProperty('--stagger-index', index);
+                 }
+                 scrollObserver.observe(target);
+            });
+
+            // --- Dark Mode Logic ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const htmlElement = document.documentElement;
+
+            // Function to set theme based on preference
+            const setTheme = (isDark) => {
+                if (isDark) {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Check for saved theme preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme(true);
+            } else {
+                setTheme(false); // Default to light
+            }
+
+            // Add click listener to the toggle
+            if(darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    setTheme(!htmlElement.classList.contains('dark'));
+                });
+            }
+
+        }); // End DOMContentLoaded
+
+    </script>
+
+</body>
+</html>

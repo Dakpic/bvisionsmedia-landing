@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVisionsMedia - Professional Media Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Color Variables --- */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb; /* bg-gray-50 */
+            --bg-card: #ffffff;
+            --bg-input: #f9fafb; /* bg-gray-50 */
+            --bg-footer: #f3f4f6; /* bg-gray-100 */
+            --bg-header: rgba(243, 244, 246, 0.4); /* bg-gray-100/40 */
+            --bg-submenu-card: rgba(229, 231, 235, 0.3); /* bg-gray-200/30 */
+            --bg-submenu-card-hover: rgba(209, 213, 219, 0.5); /* bg-gray-300/50 */
+            --bg-mobile-menu: #f3f4f6;
+            --bg-mobile-menu-hover: #e5e7eb;
+
+            --text-primary: #374151; /* gray-700 */
+            --text-secondary: #6b7280; /* gray-500 */
+            --text-heading: #1f2937; /* gray-800 */
+            --text-input: #1f2937;
+            --text-footer: #6b7280; /* Footer base text */
+            --text-footer-link: #4b5563; /* gray-600 - Footer links */
+            --text-nav-link: #4b5563; /* gray-600 */
+            --text-submenu-card: #374151;
+
+            --border-primary: #e5e7eb; /* gray-200 */
+            --border-secondary: #d1d5db; /* gray-300 */
+            --border-header: rgba(229, 231, 235, 0.4); /* border-gray-200/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+
+            --accent-color: #05bff7;
+            --accent-hover: #04a6d9;
+
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-lg-color: rgba(0, 0, 0, 0.1);
+
+            --logo-filter: grayscale(100%);
+            --logo-opacity: 0.5;
+            --logo-filter-hover: grayscale(0%);
+            --logo-opacity-hover: 1;
+        }
+
+        html.dark {
+            --bg-primary: #111827; /* gray-900 */
+            --bg-secondary: #1f2937; /* gray-800 */
+            --bg-card: #1f2937; /* gray-800 */
+            --bg-input: #374151; /* gray-700 */
+            --bg-footer: #1f2937; /* gray-800 */
+            --bg-header: rgba(31, 41, 55, 0.4); /* bg-gray-800/40 */
+            --bg-submenu-card: rgba(55, 65, 81, 0.5); /* bg-gray-700/50 */
+            --bg-submenu-card-hover: rgba(75, 85, 99, 0.6); /* bg-gray-600/60 */
+            --bg-mobile-menu: #1f2937;
+            --bg-mobile-menu-hover: #374151;
+
+            --text-primary: #d1d5db; /* gray-300 */
+            --text-secondary: #9ca3af; /* gray-400 */
+            --text-heading: #f9fafb; /* gray-50 */
+            --text-input: #f9fafb;
+            --text-footer: #9ca3af; /* Footer base text */
+            --text-footer-link: #d1d5db; /* Footer links */
+            --text-nav-link: #d1d5db; /* gray-300 */
+            --text-submenu-card: #d1d5db;
+
+            --border-primary: #374151; /* gray-700 */
+            --border-secondary: #4b5563; /* gray-600 */
+            --border-header: rgba(55, 65, 81, 0.4); /* border-gray-700/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+
+            /* Accent color can often stay the same, or adjust slightly if needed */
+            /* --accent-color: #0ea5e9; */ /* Example: slightly different blue */
+            /* --accent-hover: #0284c7; */
+
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --shadow-lg-color: rgba(0, 0, 0, 0.5);
+
+            /* Adjust logo filter for dark mode if needed */
+            --logo-filter: grayscale(50%) brightness(1.5);
+            --logo-opacity: 0.7;
+            --logo-filter-hover: grayscale(0%) brightness(1);
+            --logo-opacity-hover: 1;
+        }
+
+        /* Base Styling - Uses Variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; color: var(--text-heading); }
+        .accent-color { color: var(--accent-color); }
+        .bg-accent-color { background-color: var(--accent-color); }
+        .border-accent-color { border-color: var(--accent-color); }
+        .hover\:bg-accent-hover:hover { background-color: var(--accent-hover); }
+        .hover\:text-accent-hover:hover { color: var(--accent-hover); }
+        *:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; border-radius: 2px; }
+        *:focus { outline: none; }
+        html { scroll-behavior: smooth; }
+
+        /* --- Button Base & Hover Effects --- */
+        .button-base { display: inline-block; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; cursor: pointer; position: relative; overflow: hidden; z-index: 1; }
+        .button-base:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--shadow-color); animation: breathe 1.8s infinite ease-in-out; }
+        /* Primary Button */
+        .button-primary { background-color: var(--accent-color); color: white; }
+        .button-primary::before { content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100% ); transform: skewX(-25deg); z-index: 2; animation: none; pointer-events: none; }
+        html.dark .button-primary::before { background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100% ); } /* Subtle shimmer for dark */
+        .button-primary:hover::before { animation: shimmer 1.5s infinite linear; }
+        /* Secondary Button */
+        .button-secondary { border: 1px solid var(--accent-color); color: var(--accent-color); background-color: transparent; }
+        .button-secondary:hover { background-color: var(--accent-color); color: var(--bg-primary); border-color: var(--accent-color); transform: translateY(-1px); animation: breathe-secondary 1.8s infinite ease-in-out; }
+        html.dark .button-secondary:hover { color: var(--text-heading); } /* Ensure contrast on dark */
+
+        /* --- Animations --- */
+        @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
+        @keyframes breathe { 0%, 100% { transform: translateY(-2px) scale(1); /* Adjust font-size if needed */ } 50% { transform: translateY(-2px) scale(1.03); /* Adjust font-size if needed */ } }
+        @keyframes breathe-secondary { 0%, 100% { transform: translateY(-1px) scale(1); /* Adjust font-size if needed */ } 50% { transform: translateY(-1px) scale(1.02); /* Adjust font-size if needed */ } }
+        @keyframes text-shimmer-subtle { 0% { background-position: 150% 0; } 100% { background-position: -150% 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes subtleGradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } } /* Logo slide */
+
+        /* --- Video Hero Section Styling --- */
+        .video-hero { position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; background-color: #e5e7eb; } /* Placeholder bg */
+        html.dark .video-hero { background-color: #1f2937; } /* Darker placeholder bg */
+        .video-background { position: absolute; inset: 0; z-index: 1; }
+        .video-background video { width: 100%; height: 100%; object-fit: cover; }
+        .video-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.45) 100%), url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); } /* Subtle pattern */
+        html.dark .video-overlay { background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%); } /* Darker overlay */
+        .hero-content { position: relative; z-index: 3; color: #ffffff; padding: 1rem; margin-top: 80px; /* Adjust if header height changes */ }
+        .hero-content h1 { color: #ffffff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); }
+        .hero-content p { color: #e5e7eb; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
+
+        /* --- Header & Navigation Styling --- */
+        #main-header {
+            position: fixed; /* Keep header fixed */
+            top: 1rem; /* top-4 */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50; /* Ensure header is above content */
+            width: auto; /* Let content determine width */
+            max-width: 95%; /* Limit max width */
+            backdrop-filter: blur(10px); /* Apply blur */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-lg */
+            border-radius: 1.5rem; /* rounded-3xl */
+            overflow: hidden; /* Clip content within rounded corners */
+            transition: min-height 0.3s ease-out;
+            min-height: 3rem; /* h-12 */
+            background-color: var(--bg-header); /* Semi-transparent background */
+            border: 1px solid var(--border-header); /* Subtle border */
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            #main-header { max-width: 72rem; } /* max-w-6xl */
+        }
+        @media (min-width: 1280px) { /* xl breakpoint */
+            #main-header { max-width: 80rem; } /* max-w-7xl */
+        }
+        #main-header.header-expanded {
+            min-height: 12rem; /* Adjust as needed for submenu content */
+        }
+
+        /* Main Nav Container (<nav>) */
+        #main-nav-container {
+            /* Use container mx-auto for centering content within the header */
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 0.25rem; /* py-1 */
+            padding-bottom: 0.25rem; /* py-1 */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center nav links */
+            position: relative; /* For mobile menu button positioning */
+            height: 3rem; /* h-12 - Match header min-height */
+            transition: padding-left 0.3s ease-out, padding-right 0.3s ease-out;
+            padding-left: 0.75rem; /* Default px-3 */
+            padding-right: 0.75rem; /* Default px-3 */
+        }
+        #main-header.header-expanded #main-nav-container {
+            padding-left: 1.5rem; /* Increased px-6 */
+            padding-right: 1.5rem; /* Increased px-6 */
+        }
+
+        /* Nav Links */
+        .nav-link {
+            color: var(--text-nav-link);
+            padding-left: 0.5rem; /* px-2 */
+            padding-right: 0.5rem; /* px-2 */
+            padding-top: 0.25rem; /* py-1 */
+            padding-bottom: 0.25rem; /* py-1 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 500; /* font-medium */
+            transition: color 0.2s ease;
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .nav-link { font-size: 0.875rem; } /* text-sm */
+        }
+        .nav-link:hover { color: var(--accent-color); }
+
+        /* Desktop Nav Link Spacing */
+        #desktop-nav-links {
+            display: flex; /* Use flexbox */
+            align-items: center; /* Vertically align items */
+            justify-content: center; /* Center items horizontally */
+            transition: gap 0.3s ease-out; /* Animate gap change */
+            gap: 0.25rem; /* Default small gap */
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+             #desktop-nav-links {
+                 gap: 0.5rem; /* Default larger gap on lg */
+             }
+        }
+        /* Expanded state for nav links - uses descendant selector */
+        #main-header.header-expanded #desktop-nav-links {
+            gap: 1rem; /* Increased gap */
+        }
+         @media (min-width: 1024px) { /* lg breakpoint */
+             #main-header.header-expanded #desktop-nav-links {
+                 gap: 1.5rem; /* Further increased gap on lg */
+             }
+         }
+
+        /* Submenu display area inside header */
+        #submenu-display-area {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        #main-header.header-expanded #submenu-display-area {
+            max-height: 15rem; /* Adjust based on content */
+            opacity: 1;
+            padding-top: 0.75rem; /* pt-3 */
+            padding-bottom: 1rem; /* pb-4 */
+        }
+        /* Grid styling for submenu links (now contains cards) */
+        #submenu-display-area .submenu-grid {
+            display: grid;
+            /* grid-template-columns set dynamically by JS */
+            gap: 0.75rem; /* gap-3 */
+        }
+        /* Styling for the card link */
+        #submenu-display-area .submenu-grid .submenu-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem; /* p-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            background-color: var(--bg-submenu-card);
+            border: 1px solid transparent; /* For layout stability on hover */
+            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: var(--text-submenu-card);
+            min-height: 4rem; /* Ensure cards have some height */
+        }
+        #submenu-display-area .submenu-grid .submenu-card:hover {
+            background-color: var(--bg-submenu-card-hover);
+            transform: translateY(-2px);
+            border-color: var(--border-card-hover); /* Accent border on hover */
+        }
+        /* Icon styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card i {
+            font-size: 1.25rem; /* text-xl */
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: var(--accent-color);
+            transition: color 0.2s ease;
+        }
+         #submenu-display-area .submenu-grid .submenu-card:hover i {
+             color: var(--accent-hover);
+         }
+        /* Text styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card span {
+            font-size: 0.75rem; /* text-xs */
+            text-align: center;
+            line-height: 1.1; /* Tighten line height */
+        }
+
+        /* Hide original UL submenus */
+        .main-nav .sub-menu {
+            display: none;
+        }
+
+        /* Mobile menu dropdown positioning & Styling */
+        #mobile-menu-container {
+            position: absolute;
+            top: calc(100% + 6px); /* Position below the header */
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 1rem); /* Slightly inset */
+            max-width: 360px; /* Limit width */
+            background-color: var(--bg-mobile-menu);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 25px var(--shadow-color);
+            z-index: 40; /* Below header (50) but above content */
+        }
+        #mobile-menu-container li a {
+             display: block;
+             padding: 0.75rem 1rem; /* px-3 py-2 */
+             border-radius: 0.375rem; /* rounded-md */
+             font-size: 1rem; /* text-base */
+             font-weight: 500; /* font-medium */
+             transition: background-color 0.2s ease, color 0.2s ease;
+             color: var(--text-primary);
+        }
+        #mobile-menu-container li a:hover {
+             background-color: var(--bg-mobile-menu-hover);
+             color: var(--accent-color);
+        }
+
+        /* --- Client Logos Section Styling --- */
+        .client-logos-section {
+             overflow: hidden; /* Hide overflowing logos */
+             position: relative; /* For pseudo-elements */
+             padding: 4rem 0; /* py-16 */
+             background-color: var(--bg-primary);
+             border-top: 1px solid var(--border-primary);
+             border-bottom: 1px solid var(--border-primary);
+        }
+        .logos-container {
+             display: flex;
+             width: fit-content; /* Allow container to grow with content */
+        }
+        .logos-slide {
+             display: flex;
+             align-items: center;
+             animation: 40s slide infinite linear; /* Adjust duration as needed */
+             flex-shrink: 0; /* Prevent slide from shrinking */
+        }
+        .logos-slide img {
+             display: block;
+             height: 50px; /* Fixed height */
+             max-width: 130px; /* Max width */
+             width: auto; /* Maintain aspect ratio */
+             margin: 0 2.5rem; /* mx-10 */
+             object-fit: contain; /* Ensure logo fits */
+             filter: var(--logo-filter);
+             opacity: var(--logo-opacity);
+             transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+        }
+        .logos-slide img:hover {
+             filter: var(--logo-filter-hover);
+             opacity: var(--logo-opacity-hover);
+             transform: scale(1.1);
+        }
+         /* Fades at the edges */
+         .client-logos-section::before, .client-logos-section::after {
+             content: '';
+             position: absolute;
+             top: 0;
+             bottom: 0;
+             width: 100px; /* Adjust width of fade */
+             z-index: 2;
+             pointer-events: none; /* Allow clicks through */
+         }
+         .client-logos-section::before {
+             left: 0;
+             background: linear-gradient(to right, var(--bg-primary), rgba(255, 255, 255, 0)); /* Use bg variable */
+         }
+         .client-logos-section::after {
+             right: 0;
+             background: linear-gradient(to left, var(--bg-primary), rgba(255, 255, 255, 0)); /* Use bg variable */
+         }
+         html.dark .client-logos-section::before {
+             background: linear-gradient(to right, var(--bg-primary), rgba(17, 24, 39, 0)); /* Adjust fade for dark */
+         }
+         html.dark .client-logos-section::after {
+             background: linear-gradient(to left, var(--bg-primary), rgba(17, 24, 39, 0)); /* Adjust fade for dark */
+         }
+
+        /* --- Subtle Icon Pattern Background --- */
+        .bg-pattern {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-primary);
+            /* Light mode pattern */
+            background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Csymbol id='icon-camera' viewBox='0 0 512 512'%3E%3Cpath fill='%23e5e7eb' d='M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-38.9 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z'/%3E%3C/symbol%3E%3Csymbol id='icon-video' viewBox='0 0 576 512'%3E%3Cpath fill='%23e5e7eb' d='M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V190.5c0 13.4 10.9 24.3 24.3 24.3H512c13.4 0 24.3-10.9 24.3-24.3V128c0-35.3-28.7-64-64-64H416c-35.3 0-64 28.7-64 64v32H64V128zM64 384H512c35.3 0 64-28.7 64-64V254.5c0-13.4-10.9-24.3-24.3-24.3H416.3c-13.4 0-24.3 10.9-24.3 24.3V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V288H320v96z'/%3E%3C/symbol%3E%3Csymbol id='icon-lightbulb' viewBox='0 0 384 512'%3E%3Cpath fill='%23e5e7eb' d='M272 384c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-17.9 17.9V320c0-13.3-10.7-24-24-24s-24 10.7-24 24v48.1l-17.9-17.9c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l48 48c9.4 9.4 24.6 9.4 33.9 0l48-48zM192 0C100.7 0 32 72.4 32 169.5C32 212.2 49 252.4 78.8 284.2L112 320h16V448c0 17.7 14.3 32 32 32s32-14.3 32-32V320h16l33.2-35.8C263 252.4 280 212.2 280 169.5C280 72.4 204.8 0 192 0z'/%3E%3C/symbol%3E%3C/defs%3E%3Cuse xlink:href='%23icon-camera' x='15' y='20' width='25' height='25' opacity='0.5' transform='rotate(10 27.5 32.5)'/%3E%3Cuse xlink:href='%23icon-video' x='100' y='40' width='30' height='30' opacity='0.5' transform='rotate(-5 115 55)'/%3E%3Cuse xlink:href='%23icon-lightbulb' x='60' y='100' width='22' height='22' opacity='0.5' transform='rotate(15 71 111)'/%3E%3C/svg%3E");
+        }
+        /* Dark mode pattern - SVG icons need direct fill update */
+        html.dark .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Csymbol id='icon-camera' viewBox='0 0 512 512'%3E%3Cpath fill='%23374151' d='M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-38.9 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z'/%3E%3C/symbol%3E%3Csymbol id='icon-video' viewBox='0 0 576 512'%3E%3Cpath fill='%23374151' d='M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V190.5c0 13.4 10.9 24.3 24.3 24.3H512c13.4 0 24.3-10.9 24.3-24.3V128c0-35.3-28.7-64-64-64H416c-35.3 0-64 28.7-64 64v32H64V128zM64 384H512c35.3 0 64-28.7 64-64V254.5c0-13.4-10.9-24.3-24.3-24.3H416.3c-13.4 0-24.3 10.9-24.3 24.3V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V288H320v96z'/%3E%3C/symbol%3E%3Csymbol id='icon-lightbulb' viewBox='0 0 384 512'%3E%3Cpath fill='%23374151' d='M272 384c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-17.9 17.9V320c0-13.3-10.7-24-24-24s-24 10.7-24 24v48.1l-17.9-17.9c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l48 48c9.4 9.4 24.6 9.4 33.9 0l48-48zM192 0C100.7 0 32 72.4 32 169.5C32 212.2 49 252.4 78.8 284.2L112 320h16V448c0 17.7 14.3 32 32 32s32-14.3 32-32V320h16l33.2-35.8C263 252.4 280 212.2 280 169.5C280 72.4 204.8 0 192 0z'/%3E%3C/symbol%3E%3C/defs%3E%3Cuse xlink:href='%23icon-camera' x='15' y='20' width='25' height='25' opacity='0.5' transform='rotate(10 27.5 32.5)'/%3E%3Cuse xlink:href='%23icon-video' x='100' y='40' width='30' height='30' opacity='0.5' transform='rotate(-5 115 55)'/%3E%3Cuse xlink:href='%23icon-lightbulb' x='60' y='100' width='22' height='22' opacity='0.5' transform='rotate(15 71 111)'/%3E%3C/svg%3E");
+        }
+
+        /* --- Animated Gradient Background --- */
+        .animated-gradient-bg {
+            background: linear-gradient(135deg, var(--bg-primary) 50%, #f0faff 100%); /* Light mode gradient */
+            background-size: 300% 300%;
+            animation: subtleGradientShift 25s ease infinite alternate;
+            position: relative; /* Needed for z-index on children */
+            overflow: hidden; /* Clip potential overflow */
+            border-top: 1px solid var(--border-primary);
+        }
+        html.dark .animated-gradient-bg {
+            background: linear-gradient(135deg, var(--bg-primary) 50%, #1e293b 100%); /* Dark mode gradient */
+        }
+        .animated-gradient-bg > * {
+            position: relative; /* Ensure content is above gradient */
+            z-index: 1;
+        }
+
+        /* --- Media Services Section Styling (Cards) --- */
+        .service-card {
+            display: block; /* Make the whole card clickable */
+            padding: 2rem; /* p-8 */
+            text-align: center;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem; /* rounded-lg */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1; /* Stacking context */
+        }
+        .service-card:hover {
+            transform: translateY(-5px) !important; /* Lift effect, !important needed due to scroll-animate */
+            box-shadow: 0 10px 20px var(--shadow-color);
+            border-color: var(--border-card-hover); /* Accent border */
+        }
+        .service-card-icon {
+            margin-bottom: 1rem; /* mb-4 */
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-card-icon {
+            transform: scale(1.1); /* Scale icon on hover */
+        }
+        .service-card-content {
+            position: relative;
+            z-index: 2; /* Ensure text is above potential pseudo-elements */
+        }
+        .service-card h3 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; /* mb-2 */
+            color: var(--text-heading);
+        }
+        .service-card p {
+            font-size: 0.875rem; /* text-sm */
+            color: var(--text-primary);
+        }
+
+        /* --- Portfolio Section Styling --- */
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 0.375rem; /* rounded-md */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            background-color: var(--border-primary); /* Placeholder bg */
+            z-index: 1; /* Stacking context */
+        }
+        .portfolio-item:hover {
+            transform: translateY(-4px) !important; /* Lift effect */
+            box-shadow: 0 8px 25px var(--shadow-lg-color);
+        }
+        .portfolio-thumbnail {
+            display: block;
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            transition: transform 0.4s ease;
+            border-radius: 0.375rem; /* Match parent */
+        }
+        .portfolio-item:hover .portfolio-thumbnail {
+            transform: scale(1.08); /* Zoom effect */
+        }
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 50%); /* Gradient overlay */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center play icon vertically */
+            align-items: center; /* Center play icon horizontally */
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0.375rem; /* Match parent */
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+        .portfolio-play-icon {
+            font-size: 3rem; /* text-3xl */
+            color: rgba(255, 255, 255, 0.85);
+            transition: transform 0.3s ease, color 0.3s ease;
+            transform: scale(0.9); /* Start slightly smaller */
+        }
+        .portfolio-item:hover .portfolio-play-icon {
+            transform: scale(1.1); /* Scale up on hover */
+            color: #ffffff;
+        }
+        /* Removed portfolio-title as it wasn't used in the HTML structure */
+
+        /* --- About & Contact Section Shared Styling --- */
+        .section-title-link {
+            text-decoration: none;
+            color: inherit; /* Inherit heading color */
+            transition: color 0.3s ease;
+        }
+        h2.section-heading {
+            position: relative;
+            display: inline-block; /* Fit content width */
+            padding-bottom: 0.5rem; /* Space for underline */
+        }
+        /* Underline effect */
+        h2.section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 50px; /* Underline width */
+            height: 3px; /* Underline thickness */
+            background-color: var(--accent-color);
+            border-radius: 2px;
+            /* Centering for text-center */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* Alignment for text-left */
+        .text-left h2.section-heading::after {
+            left: 0;
+            transform: translateX(0);
+        }
+        /* Text Shimmer for Clickable Section Titles */
+        h2.section-heading a.section-title-link {
+            background-image: linear-gradient(90deg, var(--text-heading), var(--text-heading));
+            background-size: 100% 100%;
+            background-repeat: repeat;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+        h2.section-heading a.section-title-link:hover {
+            background-image: linear-gradient(90deg, var(--accent-color) 45%, var(--bg-primary) 50%, var(--accent-color) 55%); /* Shimmer colors */
+            background-size: 300% 100%;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: text-shimmer-subtle 4s infinite linear;
+        }
+        /* About section image styling */
+        #about-snippet img {
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-md */
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensure image covers area */
+        }
+
+        /* --- Contact Form Styling --- */
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block; /* Ensure label is above input */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: var(--text-primary);
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid var(--border-secondary);
+            background-color: var(--bg-input);
+            color: var(--text-input);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--border-input-focus); /* Accent border on focus */
+            box-shadow: 0 0 0 2px rgba(5, 191, 247, 0.2); /* Focus ring */
+            outline: none; /* Remove default outline */
+        }
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .contact-info a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+        .contact-icon {
+            width: 1.5rem; /* w-6 */
+            height: 1.5rem; /* h-6 */
+            margin-right: 0.75rem; /* mr-3 */
+            color: var(--accent-color);
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .contact-info h3, .contact-info h4 { color: var(--text-heading); }
+        .contact-info p { color: var(--text-primary); display: flex; align-items: center; } /* Align icon and text */
+        .contact-info .fab { /* Social icons in contact */
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+            font-size: 1.25rem; /* text-xl */
+        }
+        .contact-info .fab:hover { color: var(--accent-color); }
+        /* Wrapper for contact form and details */
+        .section-content-wrapper {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px var(--shadow-lg-color), 0 4px 6px -4px var(--shadow-lg-color); /* shadow-lg */
+        }
+
+        /* --- Footer Styling --- */
+        footer {
+            background-color: var(--bg-footer);
+            border-top: 1px solid var(--border-primary);
+            color: var(--text-footer); /* Base text color */
+            padding-top: 2.5rem; /* py-10 */
+            padding-bottom: 2.5rem; /* py-10 */
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            footer {
+                padding-top: 4rem; /* md:py-16 */
+                padding-bottom: 4rem; /* md:py-16 */
+            }
+        }
+        footer h5 {
+            font-weight: 600; /* font-semibold */
+            font-size: 1rem; /* text-base */
+            margin-bottom: 0.75rem; /* mb-3 */
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* tracking-wider */
+            color: var(--text-heading); /* Use heading color for titles */
+        }
+        footer ul {
+            list-style: none; /* Remove default list styles */
+            padding: 0;
+            margin: 0;
+        }
+        footer ul li { margin-bottom: 0.5rem; } /* space-y-2 */
+        footer ul li:last-child { margin-bottom: 0; }
+        footer a {
+            color: var(--text-footer-link); /* Specific link color */
+            transition: color 0.2s ease;
+            font-size: 0.875rem; /* text-sm */
+        }
+        footer a:hover {
+            color: var(--text-primary); /* Darker hover color */
+        }
+        footer .social-icons a i {
+            color: var(--text-secondary); /* Match contact section icon color */
+            transition: color 0.3s ease;
+            font-size: 1.125rem; /* text-lg */
+        }
+        footer .social-icons a:hover i {
+            color: var(--accent-color); /* Match contact section icon hover color */
+        }
+        /* Footer bottom section */
+        footer .border-t {
+             border-color: var(--border-secondary); /* Slightly darker border */
+             padding-top: 2rem; /* pt-8 */
+             margin-top: 2rem; /* mt-8 */
+        }
+        footer .text-xs { font-size: 0.75rem; }
+
+        /* --- Video Modal Styling --- */
+        #videoModal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            inset: 0; /* Cover the whole screen */
+            z-index: 100; /* Sit on top */
+            align-items: center; /* Vertical centering */
+            justify-content: center; /* Horizontal centering */
+            padding: 1rem; /* Padding around content */
+            background-color: rgba(31, 41, 55, 0.9); /* gray-800/90 */
+        }
+        html.dark #videoModal {
+            background-color: rgba(17, 24, 39, 0.95); /* gray-900/95 */
+        }
+        .modal-content {
+            position: relative; /* For potential absolute children */
+            max-width: 90vw; /* Limit width */
+            max-height: 85vh; /* Limit height */
+            width: 100%; /* Responsive width */
+        }
+        .modal-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0; /* Collapse height */
+            overflow: hidden; /* Hide overflowing iframe */
+            background-color: #000; /* Black background while loading */
+            border-radius: 0.5rem; /* rounded-lg */
+        }
+        .modal-player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Remove iframe border */
+        }
+        .modal-close-instruction {
+            text-align: center;
+            margin-top: 0.75rem; /* mt-3 */
+            color: #9ca3af; /* gray-400 */
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        /* --- Scroll Animation Styling --- */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Stagger animation delay using CSS variable */
+        .scroll-animate-stagger > * {
+            transition-delay: calc(var(--stagger-index, 0) * 100ms); /* Apply delay based on index */
+        }
+
+        /* --- Dark Mode Toggle --- */
+        #darkModeToggle {
+            position: fixed;
+            bottom: 1.5rem; /* bottom-6 */
+            left: 1.5rem; /* left-6 */
+            z-index: 100; /* High z-index */
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.5rem; /* p-2 */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-md */
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            width: 2.5rem; /* Fixed size */
+            height: 2.5rem; /* Fixed size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #darkModeToggle:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        #darkModeToggle i { font-size: 1rem; } /* Adjust icon size if needed */
+        #darkModeToggle .fa-sun { display: none; } /* Hide sun by default */
+        html.dark #darkModeToggle .fa-sun { display: inline-block; } /* Show sun in dark mode */
+        html.dark #darkModeToggle .fa-moon { display: none; } /* Hide moon in dark mode */
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="fixed top-4 left-8 z-50 flex items-center h-12">
+        <a href="#home" class="logo-link">
+            <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/150x48/ffffff/374151?text=Logo';">
+        </a>
+    </div>
+
+    <header id="main-header">
+        <nav id="main-nav-container" class="container">
+            <div class="hidden md:flex">
+                <ul id="desktop-nav-links" class="main-nav flex items-center">
+                    <li><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="nav-link inline-flex items-center">
+                            Media Services <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="nav-link inline-flex items-center">
+                            Who We Work With <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li>
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="md:hidden absolute right-1 top-1/2 -translate-y-1/2">
+                <button id="mobile-menu-button" class="focus:outline-none p-1.5">
+                    <i class="fas fa-bars text-lg" style="color: var(--text-nav-link);"></i> </button>
+            </div>
+        </nav>
+
+        <div id="submenu-display-area">
+            </div>
+
+        <div class="md:hidden hidden" id="mobile-menu-container">
+            <ul class="px-4 pt-2 pb-4 space-y-1">
+                 <li><a href="index.html#home">Home</a></li>
+                 <li><a href="portfolio.html">Portfolio</a></li>
+                 <li><a href="media-services.html">Media Services</a></li>
+                 <li><a href="about.html">About Us</a></li>
+                 <li><a href="who-we-work-with.html">Who We Work With</a></li>
+                 <li><a href="contact.html">Contact Us</a></li>
+                 <li><a href="contact.html" class="mt-3 block w-full text-center button-primary button-base text-white px-4 py-2.5 rounded-full text-base font-semibold transition duration-300">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="fixed top-4 right-8 z-50 hidden md:flex items-center h-12">
+        <a href="contact.html" class="header-cta-button button-primary button-base text-white px-3 rounded-full text-xs lg:text-sm font-semibold shadow-md whitespace-nowrap h-full flex items-center">Tell Your Story</a>
+    </div>
+
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i> <i class="fas fa-sun"></i>  </button>
+
+    <section id="home" class="video-hero">
+        <div class="video-background">
+            <video autoplay loop muted playsinline poster="assets/images/general/placeholder-600x400.png" onerror="this.onerror=null; this.poster='https://placehold.co/1920x1080/e5e7eb/374151?text=Video+Not+Found'">
+                <source src="assets/videos/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag. </video>
+        </div>
+        <div class="video-overlay"></div>
+        <div class="hero-content max-w-3xl mx-auto">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-tight">Capturing Moments, Crafting Stories</h1>
+            <p class="text-lg md:text-xl mb-10 font-light" style="color: var(--text-secondary);">Professional video & photography that elevates your brand and preserves your memories.</p> <a href="#new-media-services" class="cta-button inline-block button-primary button-base text-white px-8 py-3 rounded-full text-lg font-semibold">Explore Services</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="client-logos" class="client-logos-section animated-gradient-bg border-t border-b mt-20">
+             <div class="logos-container w-full relative z-10">
+                 <div class="logos-slide flex-nowrap">
+                     <img src="assets/images/clients/at-properties.svg" alt="@properties Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/acres.png" alt="Acres Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/advanced-plumbing-systems.png" alt="Advanced Plumbing Systems Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/big-river-rally.png" alt="Big River Rally Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/country-boom.png" alt="Country Boom Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/dbs-group.svg" alt="DBS Group Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/ffp.png" alt="FFP Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/gerrard-hoeschler.jpg" alt="Gerrard Hoeschler Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/habitat-for-humanity.png" alt="Habitat for Humanity Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/kickapoo.svg" alt="Kickapoo Coffee Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/ltc.png" alt="LTC Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/market-and-johnson.png" alt="Market & Johnson Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/oktoberfest.svg" alt="Oktoberfest Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/organic-valley.png" alt="Organic Valley Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/the-board-store.png" alt="The Board Store Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/at-properties.svg" alt="@properties Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/acres.png" alt="Acres Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/advanced-plumbing-systems.png" alt="Advanced Plumbing Systems Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/big-river-rally.png" alt="Big River Rally Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/country-boom.png" alt="Country Boom Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/dbs-group.svg" alt="DBS Group Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/ffp.png" alt="FFP Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/gerrard-hoeschler.jpg" alt="Gerrard Hoeschler Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/habitat-for-humanity.png" alt="Habitat for Humanity Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/kickapoo.svg" alt="Kickapoo Coffee Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/ltc.png" alt="LTC Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/market-and-johnson.png" alt="Market & Johnson Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/oktoberfest.svg" alt="Oktoberfest Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/organic-valley.png" alt="Organic Valley Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                     <img src="assets/images/clients/the-board-store.png" alt="The Board Store Logo" onerror="this.onerror=null; this.src='https://placehold.co/130x50/f3f4f6/9ca3af?text=Logo'; this.style.filter='grayscale(0)'; this.style.opacity='1';">
+                 </div>
+             </div>
+        </section>
+
+        <section id="new-media-services" class="bg-pattern py-16 md:py-24 border-t">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4 section-heading">
+                     <a href="media-services.html" class="section-title-link">Our Creative Services</a>
+                 </h2>
+                 <p class="text-lg mb-12 max-w-2xl mx-auto" style="color: var(--text-secondary);">Tailored media solutions to meet your specific needs.</p>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 scroll-animate-stagger">
+                     <a href="photography-services.html" class="service-card scroll-animate" style="--stagger-index: 0;">
+                         <div class="service-card-icon"><i class="fas fa-camera-retro text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Photography</h3>
+                             <p>Stunning visuals for events, portraits, products, and branding.</p>
+                         </div>
+                     </a>
+                     <a href="video-production-services.html" class="service-card scroll-animate" style="--stagger-index: 1;">
+                         <div class="service-card-icon"><i class="fas fa-video text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Video Production</h3>
+                             <p>Cinematic storytelling through brand films, commercials, and events.</p>
+                         </div>
+                     </a>
+                     <a href="short-form-videos.html" class="service-card scroll-animate" style="--stagger-index: 2;">
+                         <div class="service-card-icon"><i class="fas fa-mobile-alt text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Short Form Video</h3>
+                             <p>Engaging content optimized for social media platforms.</p>
+                         </div>
+                     </a>
+                     <a href="drone-video-photography.html" class="service-card scroll-animate" style="--stagger-index: 3;">
+                         <div class="service-card-icon"><i class="fas fa-helicopter text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Drone Services</h3>
+                             <p>Breathtaking aerial perspectives for unique visual impact.</p>
+                         </div>
+                     </a>
+                     <a href="social-media-management.html" class="service-card scroll-animate" style="--stagger-index: 4;">
+                         <div class="service-card-icon"><i class="fas fa-share-alt text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Social Media</h3>
+                             <p>Content creation and strategy to grow your online presence.</p>
+                         </div>
+                     </a>
+                     <a href="strategic-media-consulting.html" class="service-card scroll-animate" style="--stagger-index: 5;">
+                         <div class="service-card-icon"><i class="fas fa-lightbulb text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Consulting</h3>
+                             <p>Expert guidance to align media strategy with business goals.</p>
+                         </div>
+                     </a>
+                     <a href="brand-storytelling.html" class="service-card scroll-animate" style="--stagger-index: 6;">
+                         <div class="service-card-icon"><i class="fas fa-book-open text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Brand Storytelling</h3>
+                             <p>Crafting narratives that connect with your audience authentically.</p>
+                         </div>
+                     </a>
+                     <a href="digital-ads.html" class="service-card scroll-animate" style="--stagger-index: 7;">
+                         <div class="service-card-icon"><i class="fas fa-bullhorn text-4xl accent-color"></i></div>
+                         <div class="service-card-content">
+                             <h3>Digital Ads</h3>
+                             <p>Creating impactful video and photo ads for online campaigns.</p>
+                         </div>
+                     </a>
+                 </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="animated-gradient-bg py-16 md:py-24 border-t">
+             <div class="container mx-auto px-6 text-center relative z-10">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4 section-heading">
+                     <a href="portfolio.html" class="section-title-link">Featured Work</a>
+                 </h2>
+                 <p class="text-lg mb-12 max-w-2xl mx-auto" style="color: var(--text-secondary);">See the quality and creativity we bring to every project.</p>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-animate-stagger">
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="DjYheW-cGJc" style="--stagger-index: 0;">
+                         <img src="assets/images/portfolio/DjYheW-cGJc.jpg" alt="Video Thumbnail 1" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+1';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="d-ui15UJ6no" style="--stagger-index: 1;">
+                         <img src="assets/images/portfolio/d-ui15UJ6no.jpg" alt="Video Thumbnail 2" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+2';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="hUK59BW-Xng" style="--stagger-index: 2;">
+                         <img src="assets/images/portfolio/hUK59BW-Xng.jpg" alt="Video Thumbnail 3" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+3';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="eNuqvCkzSOc" style="--stagger-index: 3;">
+                         <img src="assets/images/portfolio/eNuqvCkzSOc.jpg" alt="Video Thumbnail 4" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+4';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="EI_-cUkJECQ" style="--stagger-index: 4;">
+                         <img src="assets/images/portfolio/EI_-cUkJECQ.jpg" alt="Video Thumbnail 5" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+5';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="IVnIecXA6wk" style="--stagger-index: 5;">
+                         <img src="assets/images/portfolio/IVnIecXA6wk.jpg" alt="Video Thumbnail 6" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+6';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                     <div class="portfolio-item group scroll-animate" data-youtube-id="MdX4dizw07g" style="--stagger-index: 6;">
+                         <img src="assets/images/portfolio/MdX4dizw07g.jpg" alt="Video Thumbnail 7" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+7';">
+                         <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                         <div class="video-player-container hidden"></div>
+                     </div>
+                    <div class="portfolio-item group scroll-animate" data-youtube-id="pQDLVEb2E7Y" style="--stagger-index: 7;">
+                        <img src="assets/images/portfolio/pQDLVEb2E7Y.jpg" alt="Video Thumbnail 8" class="portfolio-thumbnail" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e5e7eb/374151?text=Video+8';">
+                        <div class="portfolio-overlay"><span class="portfolio-play-icon"><i class="fas fa-play"></i></span></div>
+                        <div class="video-player-container hidden"></div>
+                    </div>
+                 </div>
+                 <a href="portfolio.html" class="mt-12 inline-block button-primary button-base text-white px-8 py-3 rounded-full text-base font-semibold transition duration-300">View Full Portfolio</a>
+             </div>
+        </section>
+
+        <section id="about-snippet" class="bg-pattern py-16 md:py-24 border-t scroll-animate">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                         <h2 class="text-3xl md:text-4xl font-bold mb-4 section-heading text-left">
+                            <a href="about.html" class="section-title-link">Driven by Passion & Precision</a>
+                         </h2>
+                         <p class="text-lg mb-6 leading-relaxed" style="color: var(--text-primary);">We're more than just a media company; we're creative partners dedicated to bringing your vision to life with technical skill and artistic flair.</p>
+                         <p class="mb-8 leading-relaxed" style="color: var(--text-primary);">From initial concept to final delivery, we prioritize collaboration and quality, ensuring your story is told powerfully and effectively.</p>
+                         <a href="about.html" class="inline-block button-secondary button-base px-6 py-2.5 rounded-full text-base font-semibold">Learn More About Us</a>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x400/e0faff/1f2937?text=Team+or+Studio+Shot" alt="BVisionsMedia Team or Studio">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="animated-gradient-bg py-16 md:py-24 border-t scroll-animate">
+             <div class="container mx-auto px-6 relative z-10">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center section-heading">
+                    <a href="contact.html" class="section-title-link">Let's Create Together</a>
+                 </h2>
+                 <p class="text-lg mb-12 text-center max-w-2xl mx-auto" style="color: var(--text-secondary);">Have a project in mind? Reach out and let us know how we can help.</p>
+                 <div class="section-content-wrapper max-w-4xl mx-auto grid md:grid-cols-2 gap-10 p-8 md:p-12">
+                     <div class="contact-form">
+                         <h3 class="text-2xl font-semibold mb-6">Send a Message</h3>
+                         <form action="#" method="post"> <div class="form-group">
+                                 <label for="name">Name</label>
+                                 <input type="text" id="name" name="name" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="email">Email</label>
+                                 <input type="email" id="email" name="email" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="subject">Subject</label>
+                                 <input type="text" id="subject" name="subject">
+                             </div>
+                             <div class="form-group">
+                                 <label for="message">Message</label>
+                                 <textarea id="message" name="message" rows="5" required></textarea>
+                             </div>
+                             <button type="submit" class="cta-button w-full button-primary button-base text-white px-6 py-3 rounded-full text-base font-semibold transition duration-300">Send Message</button>
+                         </form>
+                     </div>
+                     <div class="contact-info mt-8 md:mt-0 md:pt-6"> <h3 class="text-2xl font-semibold mb-6">Contact Details</h3>
+                         <div class="space-y-5">
+                             <p><i class="fas fa-envelope contact-icon"></i> <a href="mailto:info@bvisionsmedia.com">info@bvisionsmedia.com</a></p>
+                             <p><i class="fas fa-phone contact-icon"></i> <a href="tel:5551234567">(555) 123-4567</a></p>
+                             <div class="pt-4">
+                                 <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+                                 <div class="flex space-x-5">
+                                     <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                     <a href="#" title="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+                                     <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-1 text-center md:text-left">
+                    <a href="#home" class="inline-block mb-4">
+                        <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="h-10 w-auto mx-auto md:mx-0" onerror="this.onerror=null; this.src='https://placehold.co/150x40/ffffff/374151?text=Logo';">
+                    </a>
+                    <p class="text-sm">Capturing moments, crafting stories. Professional media services to elevate your brand.</p>
+                </div>
+
+                <div>
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="media-services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="photography-services.html">Photography</a></li>
+                        <li><a href="video-production-services.html">Video Production</a></li>
+                        <li><a href="drone-video-photography.html">Drone Services</a></li>
+                        <li><a href="social-media-management.html">Social Media</a></li>
+                        <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                        </ul>
+                </div>
+
+                <div>
+                    <h5>Connect</h5>
+                    <ul class="space-y-2 text-sm mb-4">
+                       <li><a href="mailto:info@bvisionsmedia.com">info@bvisionsmedia.com</a></li>
+                       <li><a href="tel:5551234567">(555) 123-4567</a></li>
+                       </ul>
+                    <div class="social-icons flex space-x-4">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p class="mb-4 md:mb-0">&copy; <span id="currentYear"></span> BVisionsMedia. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#">Privacy Policy</a>
+                    <span>|</span> <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-player-wrapper">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Update Copyright Year ---
+        // Finds the span with id 'currentYear' and sets its text content to the current year.
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container');
+        // Check if both the button and container exist to prevent errors.
+        if (mobileMenuButton && mobileMenuContainer) {
+            // Add click listener to the mobile menu button.
+            mobileMenuButton.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent click from bubbling up to the document listener.
+                // Toggle the 'hidden' class on the menu container.
+                const isHidden = mobileMenuContainer.classList.toggle('hidden');
+                // Change the button icon based on whether the menu is hidden or shown.
+                mobileMenuButton.innerHTML = isHidden
+                    ? '<i class="fas fa-bars text-lg" style="color: var(--text-nav-link);"></i>' // Bars icon when hidden
+                    : '<i class="fas fa-times text-lg" style="color: var(--text-nav-link);"></i>'; // Times icon when shown
+            });
+
+            // Add click listener to the document to close the menu when clicking outside.
+            document.addEventListener('click', (event) => {
+                const header = mobileMenuButton.closest('header'); // Find the parent header.
+                // If the menu is not hidden and the click target is not within the header...
+                if (!mobileMenuContainer.classList.contains('hidden') && header && !header.contains(event.target)) {
+                    mobileMenuContainer.classList.add('hidden'); // Hide the menu.
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg" style="color: var(--text-nav-link);"></i>'; // Reset button icon.
+                }
+            });
+
+            // Add click listeners to links within the mobile menu to close it upon navigation.
+            mobileMenuContainer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuContainer.classList.add('hidden'); // Hide the menu.
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg" style="color: var(--text-nav-link);"></i>'; // Reset button icon.
+                });
+            });
+        }
+
+        // --- Expanding Header Logic ---
+        const mainHeader = document.getElementById('main-header');
+        const submenuDisplayArea = document.getElementById('submenu-display-area');
+        const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children');
+        const desktopNavLinks = document.getElementById('desktop-nav-links');
+        let closeHeaderTimeout; // Variable to hold the timeout ID for closing the header.
+
+        // Mapping of page URLs to Font Awesome icon classes for the submenu cards.
+        const iconMap = {
+            'photography-services.html': 'fa-camera-retro',
+            'video-production-services.html': 'fa-video',
+            'short-form-videos.html': 'fa-mobile-alt',
+            'drone-video-photography.html': 'fa-helicopter',
+            'social-media-management.html': 'fa-share-alt',
+            'strategic-media-consulting.html': 'fa-lightbulb',
+            'brand-storytelling.html': 'fa-book-open',
+            'digital-ads.html': 'fa-bullhorn',
+            'weddings.html': 'fa-ring',
+            'events.html': 'fa-calendar-alt',
+            'real-estate.html': 'fa-home',
+            'corporate.html': 'fa-building',
+            'construction.html': 'fa-hard-hat',
+            'agriculture.html': 'fa-tractor'
+        };
+
+        // Check if all necessary header elements exist.
+        if (mainHeader && submenuDisplayArea && menuItemsWithChildren.length > 0 && desktopNavLinks) {
+
+            // Function to open and populate the submenu display area.
+            const openSubmenu = (menuItem) => {
+                clearTimeout(closeHeaderTimeout); // Clear any existing timeout to prevent premature closing.
+                mainHeader.classList.add('header-expanded'); // Add class to expand the header.
+
+                const subMenuUl = menuItem.querySelector('.sub-menu'); // Find the hidden submenu UL.
+                if (!subMenuUl) return; // Exit if no submenu found.
+
+                const links = subMenuUl.querySelectorAll('a'); // Get all links within the submenu.
+                submenuDisplayArea.innerHTML = ''; // Clear any previous content.
+
+                if (links.length > 0) {
+                    const gridContainer = document.createElement('div'); // Create a container for the grid.
+                    // Determine the number of grid columns based on the parent link's href.
+                    const parentLinkHref = menuItem.querySelector('a.nav-link').getAttribute('href');
+                    const gridColsClass = parentLinkHref === 'who-we-work-with.html' ? 'grid-cols-3' : 'grid-cols-4'; // Example logic
+                    gridContainer.className = `submenu-grid ${gridColsClass}`; // Apply grid classes.
+
+                    // Create a card for each link in the submenu.
+                    links.forEach(link => {
+                        const linkHref = link.getAttribute('href');
+                        const linkText = link.textContent;
+                        const iconClass = iconMap[linkHref] || 'fa-question-circle'; // Get icon from map or use default.
+
+                        // Create the card element (as an anchor tag).
+                        const cardLink = document.createElement('a');
+                        cardLink.href = linkHref;
+                        cardLink.className = 'submenu-card'; // Apply card styling.
+
+                        // Create and append the icon.
+                        const iconElement = document.createElement('i');
+                        iconElement.className = `fas ${iconClass}`;
+                        cardLink.appendChild(iconElement);
+
+                        // Create and append the text.
+                        const textElement = document.createElement('span');
+                        textElement.textContent = linkText;
+                        cardLink.appendChild(textElement);
+
+                        // Append the card to the grid container.
+                        gridContainer.appendChild(cardLink);
+                    });
+                    // Append the grid container to the display area.
+                    submenuDisplayArea.appendChild(gridContainer);
+                }
+            };
+
+            // Function to start the timer for closing the submenu.
+            const startCloseSubmenu = () => {
+                clearTimeout(closeHeaderTimeout); // Clear any existing timeout.
+                // Set a new timeout to close the header after a short delay.
+                closeHeaderTimeout = setTimeout(() => {
+                    mainHeader.classList.remove('header-expanded'); // Remove class to collapse the header.
+                    // Optionally clear the submenu content after the transition ends.
+                    // setTimeout(() => { submenuDisplayArea.innerHTML = ''; }, 300);
+                }, 200); // 200ms delay before closing.
+            };
+
+            // Add mouseenter listeners to main navigation items that have children.
+            menuItemsWithChildren.forEach(item => {
+                const triggerLink = item.querySelector('a.nav-link');
+                if (triggerLink) {
+                    triggerLink.addEventListener('mouseenter', () => {
+                        openSubmenu(item); // Open the corresponding submenu.
+                    });
+                    // Mouseleave is handled by the header listener below.
+                }
+            });
+
+            // Add mouseenter listener to the header itself to cancel closing timeout if mouse re-enters.
+            mainHeader.addEventListener('mouseenter', () => {
+                clearTimeout(closeHeaderTimeout);
+            });
+
+            // Add mouseleave listener to the header to start the closing process.
+            mainHeader.addEventListener('mouseleave', () => {
+                startCloseSubmenu();
+            });
+        }
+
+
+        // --- Modal Handling for Portfolio Videos ---
+        const videoModal = document.getElementById('videoModal');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+
+        // Function to close the video modal.
+        function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none'; // Hide the modal.
+                videoModal.classList.remove('flex'); // Remove flex display style.
+                if (modalPlayerContainer) {
+                     const iframe = modalPlayerContainer.querySelector('iframe');
+                    if (iframe) iframe.src = ''; // Stop video playback by clearing src.
+                    modalPlayerContainer.innerHTML = ''; // Remove the iframe from the container.
+                }
+            }
+        }
+
+        // Function to open the video modal and load the YouTube video.
+        function openVideoModal(youtubeId) {
+            // Check if a valid YouTube ID, container, and modal exist.
+            if (youtubeId && youtubeId.length > 5 && modalPlayerContainer && videoModal) {
+                 // Construct the YouTube embed URL with autoplay and other parameters.
+                 const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+                 // Create the iframe element and set its attributes.
+                 modalPlayerContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+                 // Display the modal using flex for centering.
+                 videoModal.style.display = 'flex';
+                 videoModal.classList.add('flex');
+            } else {
+                 console.warn("Invalid or missing YouTube ID:", youtubeId); // Log warning if ID is invalid.
+            }
+        }
+
+        // Add click listeners to all portfolio items.
+        if (portfolioItems.length > 0 && videoModal && modalPlayerContainer) {
+            portfolioItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const youtubeId = item.getAttribute('data-youtube-id'); // Get the YouTube ID from data attribute.
+                    if (youtubeId) {
+                        openVideoModal(youtubeId); // Open the modal with the video.
+                    }
+                });
+            });
+        }
+
+        // Add listeners to the modal itself for closing.
+        if (videoModal) {
+             // Close when clicking on the modal background (outside the content).
+            videoModal.addEventListener('click', (event) => {
+                if (event.target === videoModal) { // Check if the click target is the modal itself.
+                     closeModal();
+                }
+            });
+             // Close when the Escape key is pressed.
+             document.addEventListener('keydown', (event) => {
+                 if (event.key === 'Escape') {
+                     closeModal();
+                 }
+             });
+        }
+
+
+        // --- Scroll Animation Logic ---
+        // Waits for the DOM to be fully loaded before running animations script.
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configuration for the Intersection Observer.
+            const observerOptions = {
+                root: null, // Observe intersections relative to the viewport.
+                rootMargin: '0px', // No margin around the viewport.
+                threshold: 0.1 // Trigger when 10% of the element becomes visible.
+            };
+
+            // Callback function executed when an observed element intersects the viewport.
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { // If the element is intersecting...
+                        entry.target.classList.add('active'); // Add 'active' class to trigger animation.
+                        // Optional: Stop observing the element after it has animated once.
+                        // observer.unobserve(entry.target);
+                    } else {
+                         // Optional: Remove 'active' class if you want the animation to reverse when scrolling out.
+                         // entry.target.classList.remove('active');
+                    }
+                });
+            };
+
+            // Create a new Intersection Observer instance.
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+            // Select all elements with the 'scroll-animate' class.
+            const targets = document.querySelectorAll('.scroll-animate');
+            // Observe each target element.
+            targets.forEach((target) => {
+                // The stagger delay is handled purely by CSS using the '--stagger-index' variable,
+                // which should be set in the HTML for elements inside a '.scroll-animate-stagger' container.
+                scrollObserver.observe(target);
+            });
+
+            // --- Dark Mode Logic ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const htmlElement = document.documentElement; // Get the root <html> element.
+
+            // Function to apply the theme (dark or light).
+            const setTheme = (isDark) => {
+                if (isDark) {
+                    htmlElement.classList.add('dark'); // Add 'dark' class to <html>.
+                    localStorage.setItem('theme', 'dark'); // Save preference to local storage.
+                } else {
+                    htmlElement.classList.remove('dark'); // Remove 'dark' class from <html>.
+                    localStorage.setItem('theme', 'light'); // Save preference to local storage.
+                }
+            };
+
+            // Determine the initial theme based on saved preference or system setting.
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; // Check system preference.
+
+            // Apply dark mode if saved preference is 'dark' OR if no preference is saved but system prefers dark.
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme(true);
+            } else {
+                setTheme(false); // Default to light mode otherwise.
+            }
+
+            // Add click listener to the dark mode toggle button.
+            if(darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    // Toggle the theme based on the current state (presence of 'dark' class).
+                    setTheme(!htmlElement.classList.contains('dark'));
+                });
+            }
+
+        }); // End DOMContentLoaded
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Photography & Videography - BVisionsMedia</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Base Styling - Copied from Events Page for Consistency */
+        body {
+            font-family: 'Inter', sans-serif; /* Default font */
+            background-color: #ffffff; /* White base */
+            color: #374151; /* Gray-700 */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+            -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+        }
+        /* Headings font and color */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: #1f2937; /* Gray-800 */
+        }
+        /* Accent color definition and utility classes */
+        .accent-color { color: #05bff7; }
+        .bg-accent-color { background-color: #05bff7; }
+        .border-accent-color { border-color: #05bff7; }
+        .hover\:bg-accent-hover:hover { background-color: #04a6d9; } /* Darker accent on hover */
+        .hover\:text-accent-hover:hover { color: #04a6d9; }
+        /* Focus state styling for accessibility */
+        *:focus-visible {
+            outline: 2px solid #05bff7;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+        *:focus { outline: none; } /* Remove default focus outline */
+        /* Smooth scrolling for anchor links */
+        html { scroll-behavior: smooth; }
+
+        /* Button Hover Effects (Consistent) */
+        .button-hover-effect {
+            transition: all 0.3s ease; /* Smooth transition for hover */
+        }
+        .button-hover-effect:hover {
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+        }
+        .button-secondary-hover-effect {
+            transition: all 0.3s ease;
+        }
+        .button-secondary-hover-effect:hover {
+            background-color: #f0fcff; /* Light blue background on hover */
+            transform: translateY(-1px);
+            color: #4b5563; /* Adjust text color if needed */
+        }
+
+        /* Header/Nav Dropdown Styles (Consistent) */
+        .main-nav .menu-item-has-children { position: relative; } /* Needed for absolute positioning of submenu */
+        .main-nav .sub-menu {
+            display: none; /* Hidden by default */
+            position: absolute; /* Position relative to parent */
+            left: 0;
+            top: 100%; /* Position below parent */
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            min-width: 220px; /* Minimum width */
+            z-index: 100; /* Ensure dropdown is above other content */
+            border: 1px solid #e5e7eb; /* Light gray border */
+            border-radius: 0.375rem; /* Rounded corners */
+            padding: 0.5rem 0; /* Vertical padding */
+            opacity: 0; /* Start hidden for transition */
+            transform: translateY(10px); /* Start slightly lower for transition */
+            transition: opacity 0.2s ease, transform 0.2s ease; /* Smooth fade and slide transition */
+        }
+        /* Show submenu on parent hover */
+        .main-nav .menu-item-has-children:hover > .sub-menu {
+            display: block; /* Make visible */
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Submenu item styling */
+        .main-nav .sub-menu li a {
+            display: block; /* Full width link */
+            padding: 0.6rem 1.25rem; /* Padding */
+            color: #374151; /* Default text color */
+            white-space: nowrap; /* Prevent text wrapping */
+            font-size: 0.875rem; /* Smaller font size */
+            transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover transition */
+        }
+        /* Submenu item hover state */
+        .main-nav .sub-menu li a:hover {
+            background-color: #f3f4f6; /* Light gray background */
+            color: #05bff7; /* Accent color text */
+        }
+
+        /* --- Hero Section Styling (Consistent) --- */
+        .hero-section {
+            position: relative; /* For overlay positioning */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the background image */
+            min-height: 70vh; /* Minimum height (70% of viewport height) */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            text-align: center; /* Center text */
+        }
+        .hero-overlay {
+            position: absolute; /* Position over the background image */
+            inset: 0; /* Cover the entire parent */
+            /* Dark gradient overlay for text readability */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+        }
+        .hero-content {
+            position: relative; /* Ensure content is above overlay */
+            z-index: 2;
+            color: #ffffff; /* White text */
+        }
+        .hero-content h1 {
+            color: #ffffff; /* Ensure heading is white */
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4); /* Text shadow for better visibility */
+        }
+        .hero-content p {
+            color: #e5e7eb; /* Light gray text */
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3); /* Text shadow */
+        }
+
+        /* --- Feature Section Styling (Consistent) --- */
+        .feature-icon-wrapper {
+             display: inline-flex; /* Allows centering icon inside */
+             align-items: center; /* Center icon vertically */
+             justify-content: center; /* Center icon horizontally */
+             width: 3.5rem; /* Fixed width */
+             height: 3.5rem; /* Fixed height */
+             border-radius: 9999px; /* Make it a circle */
+             background-color: #e0faff; /* Light blue background */
+             color: #05bff7; /* Accent color for icon */
+             margin-bottom: 1rem; /* Space below the icon */
+        }
+         .feature-icon { font-size: 1.5rem; /* Icon size */ }
+
+        /* Portfolio Snippet Styling (Consistent) */
+        .portfolio-snippet-item {
+            position: relative; /* For overlay positioning */
+            overflow: hidden; /* Hide overflowing parts (like scaled image) */
+            border-radius: 0.5rem; /* Rounded corners */
+            cursor: pointer; /* Indicate interactivity */
+            display: block; /* Ensure it behaves like a block element */
+            background-color: #e5e7eb; /* Placeholder background */
+        }
+        .portfolio-snippet-item img {
+            transition: transform 0.3s ease; /* Smooth zoom transition */
+            display: block; /* Remove extra space below image */
+            width: 100%; /* Ensure image fills container */
+            height: 100%; /* Ensure image fills container */
+            object-fit: cover; /* Cover the area, might crop */
+        }
+        .portfolio-snippet-item:hover img {
+            transform: scale(1.05); /* Zoom in image on hover */
+        }
+        .portfolio-snippet-overlay {
+            position: absolute; /* Position over the image */
+            inset: 0; /* Cover the entire item */
+            background: rgba(0,0,0,0.4); /* Semi-transparent dark overlay */
+            display: flex; /* Use flexbox for centering icon */
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease; /* Smooth fade-in transition */
+        }
+        .portfolio-snippet-item:hover .portfolio-snippet-overlay {
+            opacity: 1; /* Show overlay on hover */
+        }
+
+        /* Modal Styles (Consistent) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0; top: 0;
+            width: 100%; height: 100%; /* Full screen */
+            overflow: auto; /* Enable scroll if needed (shouldn't be necessary with centering) */
+            background-color: rgba(31, 41, 55, 0.9); /* Dark semi-transparent background */
+            /* Use flex to center the modal content */
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            position: relative; /* Needed for potential absolute children */
+            margin: auto; /* Auto margins help centering (especially without flex) */
+            padding: 15px; /* Padding around the player */
+            width: 90%; /* Responsive width */
+            max-width: 900px; /* Max width for larger screens */
+            background-color: transparent; /* Make content area transparent */
+            border: none;
+            box-shadow: none;
+        }
+        /* Aspect ratio wrapper for video player */
+        .modal-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background-color: #000; /* Black background for player area */
+            border-radius: 0.375rem; /* Rounded corners */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Shadow for depth */
+        }
+        .modal-player-wrapper iframe {
+            position: absolute; /* Position inside the wrapper */
+            top: 0; left: 0;
+            width: 100%; height: 100%; /* Fill the wrapper */
+        }
+        .modal-close-instruction {
+            color: #9ca3af; /* Light gray text */
+            text-align: center;
+            margin-top: 15px; /* Space above instruction */
+            font-size: 0.875rem; /* Small text */
+        }
+
+        /* Portfolio Filter Button Styling (Consistent) */
+        .portfolio-filters {
+            text-align: center;
+            margin-bottom: 2rem; /* mb-8 */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            display: flex; /* Use flexbox for alignment and wrapping */
+            justify-content: center; /* Center buttons */
+            gap: 0.5rem; /* Add gap between buttons */
+        }
+        .filter-button {
+            display: inline-block;
+            padding: 0.5rem 1.25rem; /* px-5 py-2 */
+            margin: 0.25rem; /* Add small margin for spacing */
+            background-color: #e5e7eb; /* gray-200 */
+            color: #374151; /* gray-700 */
+            border: 1px solid transparent;
+            border-radius: 9999px; /* rounded-full */
+            text-decoration: none;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .filter-button:hover {
+            background-color: #f3f4f6; /* gray-100 */
+            border-color: #d1d5db; /* gray-300 */
+        }
+        .filter-button.active {
+            background-color: #05bff7; /* bg-accent-color */
+            color: #ffffff; /* text-white */
+            border-color: #05bff7; /* border-accent-color */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Grid for Portfolio Items */
+         .portfolio-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+             gap: 1.5rem; /* gap-6 */
+         }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex items-center relative">
+            <div class="absolute left-6 top-1/2 transform -translate-y-1/2">
+                <a href="index.html#home" class="logo-link">
+                    <img src="https://placehold.co/160x48/05bff7/ffffff?text=BVisionsMedia" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto">
+                </a>
+            </div>
+            <div class="flex-grow flex justify-center">
+                <ul class="main-nav hidden md:flex space-x-2 items-center">
+                    <li><a href="index.html#home" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a></li>
+                    <li><a href="portfolio.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Media Services <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Who We Work With <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li>
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="absolute right-6 top-1/2 transform -translate-y-1/2 hidden md:block">
+                <a href="contact.html" class="header-cta-button bg-accent-color text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Tell Your Story</a>
+            </div>
+            <button class="md:hidden text-gray-500 hover:text-gray-800 focus:outline-none ml-auto">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+        <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+            <ul class="px-4 pt-2 pb-4 space-y-1">
+                 <li><a href="index.html#home" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Home</a></li>
+                <li><a href="portfolio.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Portfolio</a></li>
+                <li><a href="media-services.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Media Services</a></li>
+                <li><a href="about.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">About Us</a></li>
+                <li><a href="who-we-work-with.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Who We Work With</a></li>
+                <li><a href="contact.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Contact Us</a></li>
+                <li><a href="contact.html" class="mt-3 block w-full text-center bg-accent-color text-white px-4 py-2.5 rounded-full text-base font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" style="background-image: url('https://placehold.co/1920x900/a0aec0/ffffff?text=Stunning+Property+Visuals');"> <div class="hero-overlay"></div>
+            <div class="container mx-auto px-6 hero-content">
+                <div class="max-w-3xl mx-auto"> <span class="block text-sm font-semibold text-gray-100 uppercase tracking-wider mb-2">Real Estate Media by BVisionsMedia</span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">Showcase Properties, Attract Buyers</h1>
+                    <p class="text-lg md:text-xl text-gray-200 mb-8">High-quality photography and captivating videography designed to make your real estate listings stand out and sell faster.</p>
+                    <a href="contact.html?subject=Real+Estate+Media+Inquiry" class="inline-block bg-accent-color text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Get a Real Estate Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="grid md:grid-cols-2 gap-12 items-center">
+                     <div class="text-center md:text-left">
+                         <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Elevate Your Listings</h2>
+                         <p class="text-lg text-gray-600 mb-6 leading-relaxed">In today's competitive real estate market, exceptional visuals are crucial. We provide stunning photos and cinematic videos that capture the true essence and appeal of a property, helping you attract more potential buyers and secure faster sales.</p>
+                         <p class="text-gray-600 leading-relaxed">Our team uses professional equipment and techniques, including drone technology, to highlight the best features of every home, inside and out.</p>
+                         <a href="#portfolio" class="mt-8 inline-block border border-accent-color text-accent-color px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent-color hover:text-white transition duration-300 button-secondary-hover-effect">View Real Estate Portfolio</a>
+                     </div>
+                     <div class="text-center">
+                         <img src="https://placehold.co/600x450/e0faff/374151?text=Modern+Home+Exterior" alt="Real Estate Photography Example - Modern Home" class="rounded-lg shadow-md w-full h-auto object-cover max-w-md mx-auto">
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-gray-50 border-t border-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Real Estate Media Services</h2>
+                 <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">Comprehensive visual solutions to market your properties effectively.</p>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-6xl mx-auto"> <div class="text-center">
+                        <div class="feature-icon-wrapper"><i class="fas fa-camera feature-icon"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Interior & Exterior Photos</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Bright, sharp, and inviting high-resolution photos showcasing every room and angle.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="feature-icon-wrapper"><i class="fas fa-film feature-icon"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Cinematic Video Tours</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Engaging walkthrough videos that give buyers a true feel for the property's layout and flow.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="feature-icon-wrapper"><i class="fas fa-plane-departure feature-icon"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Drone Aerials</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Stunning aerial photos and videos providing unique perspectives and highlighting property context.</p>
+                    </div>
+                     <div class="text-center">
+                        <div class="feature-icon-wrapper"><i class="fas fa-moon feature-icon"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Twilight Photography</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">Dramatic evening shots that create a warm, luxurious ambiance and highlight landscape lighting.</p>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-16 md:py-24 bg-white border-t border-gray-200">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Featured Real Estate Projects</h2>
+                <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">Explore examples of how our visuals enhance property listings.</p>
+
+                <div class="portfolio-filters">
+                    <a href="portfolio.html" class="filter-button" data-filter="highlights">Highlights</a>
+                    <a href="weddings.html" class="filter-button" data-filter="weddings">Weddings</a>
+                    <a href="real-estate.html" class="filter-button active" data-filter="real-estate">Real Estate</a>
+                    <a href="events.html" class="filter-button" data-filter="events">Events</a>
+                    <a href="corporate.html" class="filter-button" data-filter="corporate">Corporate</a>
+                    <a href="construction.html" class="filter-button" data-filter="construction">Construction</a>
+                    <a href="agriculture.html" class="filter-button" data-filter="agriculture">Agriculture</a>
+                </div>
+
+                <div class="portfolio-grid mt-8"> <div class="portfolio-snippet-item video-item" data-youtube-id="hUK59BW-Xng" data-category="real-estate">
+                        <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Luxury+Home+Tour" alt="Real Estate Video 1" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-play text-white text-3xl"></i></div>
+                        <div class="video-player-container hidden"></div> </div>
+                    <div class="portfolio-snippet-item video-item" data-youtube-id="eNuqvCkzSOc" data-category="real-estate">
+                        <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Family+Home+Showcase" alt="Real Estate Video 2" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-play text-white text-3xl"></i></div>
+                        <div class="video-player-container hidden"></div>
+                    </div>
+                    <div class="portfolio-snippet-item video-item" data-youtube-id="placeholder_re_3" data-category="real-estate">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Condo+Walkthrough" alt="Real Estate Video 3" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-play text-white text-3xl"></i></div>
+                        <div class="video-player-container hidden"></div>
+                    </div>
+                    <div class="portfolio-snippet-item video-item" data-youtube-id="placeholder_re_4" data-category="real-estate">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Aerial+Property+View" alt="Real Estate Video 4" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-play text-white text-3xl"></i></div>
+                        <div class="video-player-container hidden"></div>
+                    </div>
+                     <div class="portfolio-snippet-item video-item" data-youtube-id="placeholder_re_5" data-category="real-estate">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Interior+Details" alt="Real Estate Video 5" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div> <div class="video-player-container hidden"></div>
+                    </div>
+                     <div class="portfolio-snippet-item video-item" data-youtube-id="placeholder_re_6" data-category="real-estate">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Backyard+Oasis" alt="Real Estate Video 6" class="w-full h-full object-cover">
+                        <div class="portfolio-snippet-overlay"><i class="fas fa-search-plus text-white text-3xl"></i></div>
+                        <div class="video-player-container hidden"></div>
+                    </div>
+                </div>
+                 <a href="portfolio.html" class="mt-10 inline-block text-accent-color hover:text-accent-hover font-semibold group">
+                    View Full Portfolio
+                    <i class="fas fa-arrow-right text-sm ml-1 transform group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
+            </div>
+        </section>
+
+         <section id="contact-cta" class="bg-gray-50 py-16 md:py-20 border-t border-gray-200"> <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Make Your Listings Shine?</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Contact us today to discuss your real estate photography and videography needs and get a personalized quote.</p>
+                <a href="contact.html?subject=Real+Estate+Media+Quote" class="inline-block bg-accent-color text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Request Real Estate Services</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-100 py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>© 2025 BVisionsMedia. All rights reserved.</p>
+             <div class="mt-3 text-xs text-gray-400">
+                 <a href="#" class="hover:text-gray-600 mx-2">Privacy Policy</a> |
+                 <a href="#" class="hover:text-gray-600 mx-2">Terms of Service</a>
+             </div>
+             </div>
+    </footer>
+
+    <div id="videoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-player-wrapper rounded-lg">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle Functionality (Consistent) ---
+        const menuButton = document.querySelector('header button.md\\:hidden');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuButton.innerHTML = mobileMenu.classList.contains('hidden')
+                   ? '<i class="fas fa-bars text-xl"></i>'
+                   : '<i class="fas fa-times text-xl"></i>';
+            });
+        }
+
+        // --- Video Modal Functionality (Consistent) ---
+        const videoModal = document.getElementById('videoModal');
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+        // Select items that should trigger the modal (using .video-item class)
+        const videoItems = document.querySelectorAll('.video-item'); // Target the items by class
+
+        // Function to close the modal
+         function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none';
+                videoModal.classList.remove('flex');
+                if (modalPlayerContainer) {
+                    modalPlayerContainer.innerHTML = ''; // Clear player content
+                }
+            }
+        }
+
+        // Add click listeners to video items to open the modal
+        if (videoItems.length > 0 && videoModal && modalPlayerContainer) {
+            videoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const youtubeId = item.getAttribute('data-youtube-id');
+                    // Only open modal if it's a real YouTube ID (not a placeholder)
+                    if (youtubeId && !youtubeId.startsWith('placeholder_')) {
+                         // Construct YouTube iframe URL
+                        modalPlayerContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+                        videoModal.style.display = 'flex'; // Show modal using flex
+                        videoModal.classList.add('flex'); // Ensure flex class is present
+                    } else {
+                        console.log("Placeholder or invalid video ID clicked:", youtubeId);
+                        // Optionally, handle clicks on items without valid video IDs (e.g., link to a photo gallery)
+                    }
+                });
+            });
+        }
+
+         // Add listeners to close the modal
+         if (videoModal) {
+            // Close modal when clicking the background overlay
+            videoModal.addEventListener('click', (event) => {
+                // Check if the click target is the modal background itself, not the content inside
+                if (!event.target.closest('.modal-content')) {
+                    closeModal();
+                }
+            });
+            // Close modal when pressing the Escape key
+             document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        // --- Portfolio Filter Logic (Keep for category page functionality) ---
+        document.addEventListener('DOMContentLoaded', () => {
+             const portfolioGridItems = document.querySelectorAll('.portfolio-grid .portfolio-snippet-item'); // Target items in the grid
+             const pageFilter = 'real-estate'; // This page's specific filter category
+
+             // Ensure the correct filter button is marked active visually
+             document.querySelectorAll('.filter-button').forEach(btn => {
+                 if (btn.getAttribute('data-filter') === pageFilter) {
+                     btn.classList.add('active');
+                 } else {
+                     btn.classList.remove('active');
+                 }
+             });
+
+             // Initially hide items that DO NOT match this page's category (if grid contains items from other categories)
+             // This might not be strictly necessary if the grid ONLY contains real-estate items, but good practice.
+             portfolioGridItems.forEach(item => {
+                 const itemCategory = item.getAttribute('data-category');
+                 if (!itemCategory || !itemCategory.includes(pageFilter)) {
+                     // item.style.display = 'none'; // Optionally hide non-matching items
+                 } else {
+                     item.style.display = 'block'; // Ensure relevant items are visible
+                 }
+             });
+
+             // Add click listeners to filter buttons (if dynamic filtering on this page is desired)
+             // Note: This is usually for a main portfolio page. On a category-specific page,
+             // you might just show items of that category by default.
+             document.querySelectorAll('.filter-button').forEach(button => {
+                 button.addEventListener('click', (e) => {
+                     // If clicking a filter button should navigate, let the default <a> behavior handle it.
+                     // If it should filter dynamically *on this page* (less common for category pages),
+                     // prevent default and add filtering logic here.
+                     // e.preventDefault(); // Uncomment if filtering dynamically on this page
+
+                     // Example dynamic filtering logic (uncomment if needed):
+                     /*
+                     const filterValue = button.getAttribute('data-filter');
+                     document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                     button.classList.add('active');
+
+                     portfolioGridItems.forEach(item => {
+                         const itemCategory = item.getAttribute('data-category');
+                         if (filterValue === 'all' || (itemCategory && itemCategory.includes(filterValue))) {
+                             item.style.display = 'block';
+                         } else {
+                             item.style.display = 'none';
+                         }
+                     });
+                     */
+                 });
+             });
+        });
+
+    </script>
+
+</body>
+</html>

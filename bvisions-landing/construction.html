@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Photography & Videography - BVisionsMedia</title> <!-- Original Title -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Khand:wght@400;700&family=Lustria&family=Rubik+Mono+One&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Base Styling */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter as the base font */
+            background-color: #ffffff;
+            color: #374151; /* Gray-700 */
+            overflow-x: hidden;
+        }
+
+        /* Custom accent color (Brand Blue) */
+        .accent-color { color: #05bff7; }
+        .bg-accent-color { background-color: #05bff7; }
+        .border-accent-color { border-color: #05bff7; }
+        .hover\:bg-accent-hover:hover { background-color: #04a6d9; } /* Slightly darker blue */
+
+        /* Hover effect for buttons */
+        .hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Video Hero Section Styling --- */
+        .video-hero {
+            position: relative;
+             height: calc(100vh - 68px); /* Example: Adjust 68px based on actual header height */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #333; /* Fallback background */
+        }
+        .video-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; /* Lower z-index than header */
+        }
+        .video-background video {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 2; /* Above video, below content */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3; /* Above overlay */
+            color: #ffffff;
+            padding: 1rem;
+        }
+
+        /* --- Header & Navigation Styling --- */
+        header {
+             /* Sticky positioning is handled by Tailwind class 'sticky' */
+             /* z-index: 50; is handled by Tailwind class 'z-50' */
+        }
+        .main-nav .menu-item-has-children { position: relative; }
+        .main-nav .sub-menu {
+            display: none; position: absolute; left: 0; top: 100%;
+            background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-width: 200px; z-index: 100; /* Ensure dropdown is above everything */
+            border-radius: 0 0 0.375rem 0.375rem; border: 1px solid #e5e7eb;
+        }
+        .main-nav .menu-item-has-children:hover > .sub-menu { display: block; }
+        .main-nav .sub-menu li a {
+            display: block; padding: 0.75rem 1rem; color: #374151;
+            white-space: nowrap; font-size: 0.875rem;
+        }
+        .main-nav .sub-menu li a:hover { background-color: #f3f4f6; color: #111827; }
+
+        /* --- Client Logos Section Styling --- */
+        .client-logos-section { overflow: hidden; position: relative; padding: 2rem 0; }
+        .logos-container { display: flex; width: fit-content; }
+        .logos-slide { display: flex; align-items: center; animation: 30s slide infinite linear; }
+        .logos-slide img {
+            height: 40px; margin: 0 2rem; filter: grayscale(100%); opacity: 0.7;
+            transition: filter 0.3s ease, opacity 0.3s ease;
+        }
+        .logos-slide img:hover { filter: grayscale(0%); opacity: 1; }
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* --- Media Services Section Styling --- */
+        .media-services-left {
+            background-size: cover; background-position: center; position: relative;
+            min-height: 300px; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
+        }
+         .media-services-left::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 0.375rem;
+        }
+        .media-services-text { position: relative; z-index: 1; color: #ffffff; }
+        .service-square {
+            position: relative; overflow: hidden; display: block;
+            background-size: cover; background-position: center;
+            aspect-ratio: 1 / 1; transition: transform 0.3s ease;
+        }
+         .service-square:hover { transform: scale(1.05); }
+        .service-square::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+            opacity: 0.8; transition: opacity 0.3s ease;
+        }
+        .service-square:hover::before { opacity: 0.9; }
+        .service-square-text {
+            position: absolute; bottom: 1rem; left: 1rem; right: 1rem;
+            color: #ffffff; font-weight: 600; text-align: center;
+            z-index: 1; transition: bottom 0.3s ease;
+        }
+         .service-square:hover .service-square-text { bottom: 1.5rem; }
+
+        /* --- Portfolio Section Styling --- */
+        .video-item {
+            position: relative; overflow: hidden; cursor: pointer;
+            border-radius: 0.375rem; transition: box-shadow 0.3s ease;
+        }
+        .video-item:hover { box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); }
+        .video-thumbnail { display: block; width: 100%; height: auto; transition: transform 0.3s ease; }
+        .video-item:hover .video-thumbnail { transform: scale(1.05); }
+        .video-item::after {
+            content: '\f04b'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 3rem; color: rgba(255, 255, 255, 0.8); background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 50%; padding: 1rem; opacity: 0; transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .video-item:hover::after { opacity: 1; }
+        .video-player-container { /* Hidden until JS loads player */ }
+
+        /* --- About & Contact Section Shared Styling --- */
+        .section-title-link { text-decoration: none; color: inherit; }
+         .section-title-link:hover { color: #05bff7; }
+        .section-description { /* Tailwind classes in HTML */ }
+        .section-content-wrapper { /* Tailwind classes in HTML */ }
+
+        /* --- Contact Form Styling --- */
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { /* Tailwind classes in HTML */ }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea { /* Tailwind classes in HTML */ }
+        .contact-info a { color: #05bff7; text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+
+        /* --- Footer Styling --- */
+        footer { /* Tailwind classes in HTML */ }
+
+        /* --- Video Modal Styling --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.8);
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            position: relative; margin: auto; padding: 20px; width: 90%; max-width: 900px;
+            background-color: transparent; border: none; box-shadow: none;
+        }
+        .modal-player-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+            background-color: #000; border-radius: 0.375rem;
+        }
+        .modal-player-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .modal-close-instruction { color: #ccc; text-align: center; margin-top: 10px; font-size: 0.875rem; }
+
+        /* --- Specific Page Styles (can be added if needed) --- */
+        main { /* Add padding top to clear sticky header */
+            padding-top: 68px; /* Adjust based on actual header height */
+        }
+        /* Styles for portfolio filters and grid */
+        .portfolio-filters {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .filter-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            background-color: #e5e7eb; /* gray-200 */
+            color: #374151; /* gray-700 */
+            border-radius: 9999px; /* full */
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .filter-button:hover, .filter-button.active {
+            background-color: #05bff7; /* accent-color */
+            color: #ffffff; /* white */
+        }
+        .portfolio-video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem; /* Adjust gap as needed */
+        }
+        /* Basic styling for content sections */
+        #construction-content {
+            padding: 4rem 1.5rem; /* py-16 px-6 */
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #construction-content h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #1f2937; /* gray-800 */
+        }
+        #construction-content .section-description {
+            font-size: 1.125rem; /* text-lg */
+            color: #4b5563; /* gray-600 */
+            margin-bottom: 2rem; /* mb-8 */
+        }
+        #construction-content .section-content-wrapper {
+            text-align: left;
+            background-color: #f9fafb; /* gray-50 */
+            padding: 2rem; /* p-8 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+        }
+        #construction-content h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #05bff7; /* accent-color */
+        }
+        #construction-content ul {
+            list-style: disc;
+            margin-left: 1.5rem; /* ml-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            color: #4b5563; /* gray-600 */
+        }
+        #construction-content .cta-button {
+            display: inline-block;
+            background-color: #05bff7; /* bg-accent-color */
+            color: #ffffff; /* text-white */
+            padding: 0.75rem 1.5rem; /* px-6 py-3 */
+            border-radius: 9999px; /* rounded-full */
+            font-weight: 600; /* font-semibold */
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #construction-content .cta-button:hover {
+            background-color: #04a6d9; /* hover:bg-accent-hover */
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex items-center relative"> <!-- Removed justify-between, added relative -->
+            <!-- Logo (Absolute Left) -->
+            <div class="absolute left-6 top-1/2 transform -translate-y-1/2">
+                <a href="index.html#home" class="logo-link">
+                    <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto">
+                </a>
+            </div>
+
+            <!-- Centered Navigation -->
+            <div class="flex-grow flex justify-center"> <!-- Added wrapper div for centering -->
+                <ul class="main-nav hidden md:flex space-x-2 items-center"> <!-- Adjusted space-x if needed -->
+                    <li><a href="index.html#home" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a></li>
+                    <li><a href="portfolio.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Media Services <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i> </a>
+                        <ul class="sub-menu">
+                            <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Who We Work With <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li> <!-- Consider active style -->
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA Button (Absolute Right) -->
+            <div class="absolute right-6 top-1/2 transform -translate-y-1/2 hidden md:block"> <!-- Hide on mobile -->
+                <a href="contact.html" class="header-cta-button bg-accent-color text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Tell Your Story</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-500 hover:text-gray-800 focus:outline-none ml-auto"> <!-- Use ml-auto to push to right -->
+                <i class="fas fa-bars text-xl"></i> </button>
+        </nav>
+         <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+            <ul class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                 <li><a href="index.html#home" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">Home</a></li>
+                <li><a href="portfolio.html" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">Portfolio</a></li>
+                <li><a href="media-services.html" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">Media Services</a></li>
+                <li><a href="about.html" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">About Us</a></li>
+                <li><a href="who-we-work-with.html" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">Who We Work With</a></li>
+                <li><a href="contact.html" class="block text-gray-600 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-300">Contact Us</a></li>
+                <li><a href="contact.html" class="mt-2 block w-full text-center bg-accent-color text-white px-4 py-2 rounded-full text-base font-medium hover:bg-accent-hover transition duration-300 hover-effect">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main content from original construction.html -->
+    <main>
+        <section id="portfolio-viewer" class="container mx-auto px-6 py-16 md:py-24">
+            <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-800">Who We Work With</h1>
+            <!-- Filter Buttons -->
+            <div class="portfolio-filters">
+                <a href="portfolio.html" class="filter-button" data-filter="highlights">Highlights</a>
+                <a href="weddings.html" class="filter-button" data-filter="weddings">Weddings</a>
+                <a href="real-estate.html" class="filter-button" data-filter="real-estate">Real Estate</a>
+                <a href="events.html" class="filter-button" data-filter="events">Events</a>
+                <a href="corporate.html" class="filter-button" data-filter="corporate">Corporate</a>
+                <a href="construction.html" class="filter-button active" data-filter="construction">Construction</a>
+                <a href="agriculture.html" class="filter-button" data-filter="agriculture">Agriculture</a>
+            </div>
+
+            <div class="portfolio-video-grid">
+                <!-- Construction Videos -->
+                <div class="video-item" data-youtube-id="sTp4IaxKIaA" data-category="construction">
+                     <img src="assets/images/portfolio/sTp4IaxKIaA.jpg" alt="Construction Video 1" class="video-thumbnail w-full h-auto object-cover rounded-lg">
+                    <div class="video-player-container hidden"></div>
+                </div>
+                <div class="video-item" data-youtube-id="w7KDRV9QAIA" data-category="construction">
+                     <img src="assets/images/portfolio/w7KDRV9QAIA.jpg" alt="Construction Video 2" class="video-thumbnail w-full h-auto object-cover rounded-lg">
+                    <div class="video-player-container hidden"></div>
+                </div>
+                 <!-- Add more construction video items as needed, using placeholders if necessary -->
+                 <div class="video-item" data-youtube-id="placeholder_const_3" data-category="construction">
+                     <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Construction+3" alt="Construction Video 3" class="video-thumbnail w-full h-auto object-cover rounded-lg">
+                    <div class="video-player-container hidden"></div>
+                </div>
+                 <div class="video-item" data-youtube-id="placeholder_const_4" data-category="construction">
+                     <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Construction+4" alt="Construction Video 4" class="video-thumbnail w-full h-auto object-cover rounded-lg">
+                    <div class="video-player-container hidden"></div>
+                </div>
+            </div>
+        </section>
+        <section id="construction-content" class="bg-gray-50">
+            <h1>Documenting Progress: Construction Photography & Videography</h1> <!-- Updated Heading -->
+            <p class="section-description">From groundbreaking to completion, we provide comprehensive photo and video documentation for construction projects of all sizes.</p>
+
+            <div class="section-content-wrapper">
+                <h2>Our Construction Services Include:</h2>
+                <ul>
+                    <li>Time-lapse video production</li>
+                    <li>Drone aerial surveys and progress shots</li>
+                    <li>Site documentation photography</li>
+                    <li>Marketing materials for completed projects</li>
+                    <li>Safety and training video production</li>
+                </ul>
+                <p>We capture the scale, detail, and progress of your construction work with precision and professionalism.</p>
+                <a href="contact.html" class="cta-button hover-effect">Get a Quote for Your Project</a> <!-- Updated CTA -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-100 py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>© 2025 BVisionsMedia. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                 <a href="#" class="text-gray-500 hover:text-accent-color transition duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="text-gray-500 hover:text-accent-color transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-500 hover:text-accent-color transition duration-300"><i class="fab fa-vimeo-v text-xl"></i></a>
+                 <a href="#" class="text-gray-500 hover:text-accent-color transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-player-wrapper">
+                <div id="modalVideoPlayer">
+                    </div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.querySelector('header button.md\\:hidden');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Modal Handling
+        const videoModal = document.getElementById('videoModal');
+        const videoItems = document.querySelectorAll('.video-item');
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+
+        function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none';
+                videoModal.classList.remove('flex');
+                if (modalPlayerContainer) {
+                    modalPlayerContainer.innerHTML = '';
+                }
+            }
+        }
+
+        if (videoItems.length > 0 && videoModal && modalPlayerContainer) {
+            videoItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const youtubeId = item.getAttribute('data-youtube-id');
+                    if (youtubeId && !youtubeId.startsWith('placeholder_')) {
+                        modalPlayerContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                        videoModal.style.display = 'flex';
+                        videoModal.classList.add('flex');
+                    } else if (youtubeId && youtubeId.startsWith('placeholder_')) {
+                        console.log("Placeholder video clicked, modal not opened.");
+                    }
+                });
+            });
+        }
+
+        if (videoModal) {
+            videoModal.addEventListener('click', (event) => {
+                if (event.target === videoModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Portfolio Filter Logic for Category Pages
+        document.addEventListener('DOMContentLoaded', () => {
+             const portfolioItems = document.querySelectorAll('.portfolio-video-grid .video-item');
+             const pageFilter = 'construction'; // Set this page's specific filter
+
+             // Ensure the correct filter button is marked active visually
+             document.querySelectorAll('.filter-button').forEach(btn => {
+                 if (btn.getAttribute('data-filter') === pageFilter) {
+                     btn.classList.add('active');
+                 } else {
+                     btn.classList.remove('active');
+                 }
+             });
+
+             // Hide items that DO NOT match this page's category
+             portfolioItems.forEach(item => {
+                 const categories = item.getAttribute('data-category');
+                 if (!categories || !categories.includes(pageFilter)) {
+                     item.style.display = 'none';
+                 } else {
+                     item.style.display = 'block'; // Ensure relevant items are visible
+                 }
+             });
+        });
+
+    </script>
+
+</body>
+</html>

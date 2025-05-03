@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - BVisionsMedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* --- Color Variables --- */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb; /* bg-gray-50 */
+            --bg-card: #ffffff;
+            --bg-input: #f9fafb; /* bg-gray-50 */
+            --bg-footer: #f3f4f6; /* bg-gray-100 */
+            --bg-header: rgba(243, 244, 246, 0.4); /* bg-gray-100/40 */
+            --bg-submenu-card: rgba(229, 231, 235, 0.3); /* bg-gray-200/30 */
+            --bg-submenu-card-hover: rgba(209, 213, 219, 0.5); /* bg-gray-300/50 */
+            --bg-mobile-menu: #f3f4f6;
+            --bg-mobile-menu-hover: #e5e7eb;
+            --bg-toggle-switch: #e5e7eb; /* gray-200 */
+            --bg-toggle-slider: #05bff7; /* accent */
+            --bg-filter-button: #f3f4f6; /* gray-100 */
+            --bg-filter-button-hover: #e5e7eb; /* gray-200 */
+            --bg-filter-button-active: #05bff7; /* accent */
+            --bg-industry-card: #ffffff;
+
+            --text-primary: #374151; /* gray-700 */
+            --text-secondary: #6b7280; /* gray-500 */
+            --text-heading: #1f2937; /* gray-800 */
+            --text-input: #1f2937;
+            --text-footer: #6b7280;
+            --text-footer-link: #4b5563; /* gray-600 */
+            --text-nav-link: #4b5563; /* gray-600 */
+            --text-submenu-card: #374151;
+            --text-toggle-label: #6b7280; /* gray-500 */
+            --text-toggle-label-active: #ffffff; /* white */
+            --text-filter-button: #4b5563; /* gray-600 */
+            --text-filter-button-hover: #1f2937; /* gray-800 */
+            --text-filter-button-active: #ffffff; /* white */
+            --text-industry-title: #1f2937;
+            --text-industry-desc: #6b7280;
+
+            --border-primary: #e5e7eb; /* gray-200 */
+            --border-secondary: #d1d5db; /* gray-300 */
+            --border-header: rgba(229, 231, 235, 0.4); /* border-gray-200/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+            --border-toggle-switch: #d1d5db; /* gray-300 */
+            --border-filter-button-active: #04a6d9; /* accent-hover */
+            --border-industry-card: #e5e7eb;
+            --border-industry-card-hover: #05bff7;
+
+            --accent-color: #05bff7;
+            --accent-hover: #04a6d9;
+
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-lg-color: rgba(0, 0, 0, 0.1);
+
+            --logo-filter: grayscale(100%);
+            --logo-opacity: 0.5;
+            --logo-filter-hover: grayscale(0%);
+            --logo-opacity-hover: 1;
+        }
+
+        html.dark {
+            --bg-primary: #111827; /* gray-900 */
+            --bg-secondary: #1f2937; /* gray-800 */
+            --bg-card: #1f2937; /* gray-800 */
+            --bg-input: #374151; /* gray-700 */
+            --bg-footer: #1f2937; /* gray-800 */
+            --bg-header: rgba(31, 41, 55, 0.4); /* bg-gray-800/40 */
+            --bg-submenu-card: rgba(55, 65, 81, 0.5); /* bg-gray-700/50 */
+            --bg-submenu-card-hover: rgba(75, 85, 99, 0.6); /* bg-gray-600/60 */
+            --bg-mobile-menu: #1f2937;
+            --bg-mobile-menu-hover: #374151;
+            --bg-toggle-switch: #374151; /* gray-700 */
+            --bg-toggle-slider: #05bff7; /* accent */
+            --bg-filter-button: #374151; /* gray-700 */
+            --bg-filter-button-hover: #4b5563; /* gray-600 */
+            --bg-filter-button-active: #05bff7; /* accent */
+            --bg-industry-card: #1f2937;
+
+            --text-primary: #d1d5db; /* gray-300 */
+            --text-secondary: #9ca3af; /* gray-400 */
+            --text-heading: #f9fafb; /* gray-50 */
+            --text-input: #f9fafb;
+            --text-footer: #9ca3af;
+            --text-footer-link: #d1d5db;
+            --text-nav-link: #d1d5db; /* gray-300 */
+            --text-submenu-card: #d1d5db;
+            --text-toggle-label: #9ca3af; /* gray-400 */
+            --text-toggle-label-active: #ffffff; /* white */
+            --text-filter-button: #d1d5db; /* gray-300 */
+            --text-filter-button-hover: #f9fafb; /* gray-50 */
+            --text-filter-button-active: #ffffff; /* white */
+            --text-industry-title: #f9fafb;
+            --text-industry-desc: #9ca3af;
+
+            --border-primary: #374151; /* gray-700 */
+            --border-secondary: #4b5563; /* gray-600 */
+            --border-header: rgba(55, 65, 81, 0.4); /* border-gray-700/40 */
+            --border-card-hover: #05bff7;
+            --border-input-focus: #05bff7;
+            --border-toggle-switch: #4b5563; /* gray-600 */
+            --border-filter-button-active: #04a6d9; /* accent-hover */
+            --border-industry-card: #374151;
+            --border-industry-card-hover: #05bff7;
+
+            --accent-color: #05bff7;
+            --accent-hover: #04a6d9;
+
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --shadow-lg-color: rgba(0, 0, 0, 0.5);
+
+            --logo-filter: grayscale(50%) brightness(1.5);
+            --logo-opacity: 0.7;
+            --logo-filter-hover: grayscale(0%) brightness(1);
+            --logo-opacity-hover: 1;
+        }
+
+        /* Base Styling - Uses Variables */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; color: var(--text-heading); }
+        .accent-color { color: var(--accent-color); }
+        .bg-accent-color { background-color: var(--accent-color); }
+        .border-accent-color { border-color: var(--accent-color); }
+        .hover\:bg-accent-hover:hover { background-color: var(--accent-hover); }
+        .hover\:text-accent-hover:hover { color: var(--accent-hover); }
+        *:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; border-radius: 2px; }
+        *:focus { outline: none; }
+        html { scroll-behavior: smooth; }
+
+        /* --- Button Base & Hover Effects --- */
+        .button-base { display: inline-block; text-align: center; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease; cursor: pointer; position: relative; overflow: hidden; z-index: 1; }
+        .button-base:hover { transform: translateY(-2px); box-shadow: 0 4px 15px var(--shadow-color); animation: breathe 1.8s infinite ease-in-out; }
+        /* Primary Button */
+        .button-primary { background-color: var(--accent-color); color: white; }
+        .button-primary::before { content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100% ); transform: skewX(-25deg); z-index: 2; animation: none; pointer-events: none; }
+        html.dark .button-primary::before { background: linear-gradient( 100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100% ); } /* Subtle shimmer for dark */
+        .button-primary:hover::before { animation: shimmer 1.5s infinite linear; }
+        /* Secondary Button */
+        .button-secondary { border: 1px solid var(--accent-color); color: var(--accent-color); background-color: transparent; }
+        .button-secondary:hover { background-color: var(--accent-color); color: var(--bg-primary); border-color: var(--accent-color); transform: translateY(-1px); animation: breathe-secondary 1.8s infinite ease-in-out; }
+        html.dark .button-secondary:hover { color: var(--text-heading); } /* Ensure contrast on dark */
+
+        /* --- Animations --- */
+        @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
+        @keyframes breathe { 0%, 100% { transform: translateY(-2px) scale(1); font-size: 1em; } 50% { transform: translateY(-2px) scale(1.03); font-size: 1.02em; } }
+        @keyframes breathe-secondary { 0%, 100% { transform: translateY(-1px) scale(1); font-size: 1em; } 50% { transform: translateY(-1px) scale(1.02); font-size: 1.015em; } }
+        @keyframes text-shimmer-subtle { 0% { background-position: 150% 0; } 100% { background-position: -150% 0; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes subtleGradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } } /* Logo slide */
+
+        /* --- Header & Navigation Styling --- */
+        /* Header container */
+        #main-header {
+            transition: min-height 0.3s ease-out;
+            min-height: 3rem; /* h-12 */
+            background-color: var(--bg-header);
+            border-color: var(--border-header);
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-lg */
+        }
+        #main-header.header-expanded {
+            min-height: 12rem; /* Approx h-48, adjust as needed */
+        }
+
+        /* Main Nav Container (<nav>) */
+        #main-nav-container {
+            transition: padding-left 0.3s ease-out, padding-right 0.3s ease-out;
+            padding-left: 0.75rem; /* Default px-3 */
+            padding-right: 0.75rem; /* Default px-3 */
+        }
+        #main-header.header-expanded #main-nav-container {
+            padding-left: 1.5rem; /* Increased px-6 */
+            padding-right: 1.5rem; /* Increased px-6 */
+        }
+        /* Nav Links */
+        .nav-link { color: var(--text-nav-link); }
+        .nav-link:hover { color: var(--accent-color); }
+
+
+        /* Desktop Nav Link Spacing */
+        #desktop-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: gap 0.3s ease-out; /* Animate gap change */
+            gap: 0.25rem; /* Default small gap */
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+             #desktop-nav-links {
+                 gap: 0.5rem; /* Default larger gap on lg */
+             }
+        }
+        /* Expanded state for nav links - uses descendant selector */
+        #main-header.header-expanded #desktop-nav-links {
+            gap: 1rem; /* Increased gap */
+        }
+         @media (min-width: 1024px) { /* lg breakpoint */
+             #main-header.header-expanded #desktop-nav-links {
+                 gap: 1.5rem; /* Further increased gap on lg */
+             }
+         }
+
+
+        /* Submenu display area inside header */
+        #submenu-display-area {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        #main-header.header-expanded #submenu-display-area {
+            max-height: 15rem; /* Allow more space */
+            opacity: 1;
+            padding-top: 0.75rem; /* pt-3 */
+            padding-bottom: 1rem; /* pb-4 */
+        }
+        /* Grid styling for submenu links (now contains cards) */
+        #submenu-display-area .submenu-grid {
+            display: grid;
+             /* grid-template-columns set dynamically by JS */
+            gap: 0.75rem; /* gap-3 */
+        }
+        /* Styling for the card link */
+        #submenu-display-area .submenu-grid .submenu-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem; /* p-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            background-color: var(--bg-submenu-card);
+            border: 1px solid transparent; /* Add transparent border for layout stability */
+            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: var(--text-submenu-card);
+            min-height: 4rem;
+        }
+        #submenu-display-area .submenu-grid .submenu-card:hover {
+            background-color: var(--bg-submenu-card-hover);
+            transform: translateY(-2px);
+            border-color: var(--border-card-hover); /* Use variable */
+            /* Text color doesn't change on hover */
+        }
+        /* Icon styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card i {
+            font-size: 1.25rem; /* text-xl */
+            margin-bottom: 0.25rem; /* mb-1 */
+            color: var(--accent-color);
+            transition: color 0.2s ease;
+        }
+         #submenu-display-area .submenu-grid .submenu-card:hover i {
+             color: var(--accent-hover);
+         }
+
+        /* Text styling within the card */
+        #submenu-display-area .submenu-grid .submenu-card span {
+            font-size: 0.75rem; /* text-xs */
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        /* Hide original UL submenus */
+        .main-nav .sub-menu {
+            display: none;
+        }
+
+        /* Mobile menu dropdown positioning & Styling - Opaque */
+        #mobile-menu-container {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: calc(100% - 1rem);
+            max-width: 360px;
+            background-color: var(--bg-mobile-menu);
+            border: 1px solid var(--border-primary);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            z-index: 40;
+        }
+        #mobile-menu-container li a {
+             color: var(--text-primary); /* Use primary text color */
+        }
+        #mobile-menu-container li a:hover {
+             background-color: var(--bg-mobile-menu-hover);
+             color: var(--accent-color); /* Accent color on hover */
+        }
+
+        /* --- Portfolio Page Specific Styles --- */
+         /* Toggle Switch Styling */
+        .toggle-switch {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            background-color: var(--bg-secondary); /* Use variable */
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.25rem; /* p-1 */
+            transition: background-color 0.2s ease;
+            border: 1px solid var(--border-secondary); /* Use variable */
+            position: relative; /* Needed for slider positioning */
+        }
+        .toggle-label {
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* medium */
+            color: var(--text-secondary); /* Use variable */
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            z-index: 1; /* Ensure text is above the slider */
+            position: relative;
+        }
+        .toggle-label.active {
+            color: var(--text-toggle-label-active); /* Use variable */
+        }
+        .toggle-slider {
+            position: absolute;
+            top: 0.25rem; /* p-1 */
+            bottom: 0.25rem; /* p-1 */
+            width: calc(50% - 0.25rem); /* Adjust width based on padding */
+            background-color: var(--bg-toggle-slider); /* Use variable */
+            border-radius: 9999px;
+            transition: transform 0.3s ease;
+            z-index: 0; /* Behind text */
+        }
+        .toggle-switch[data-active="photo"] .toggle-slider {
+            transform: translateX(calc(100% + 0.25rem)); /* Move slider to the right */
+        }
+
+        .portfolio-filter-group {
+             margin-top: 1.5rem; /* mt-6, space below toggle */
+             display: flex; flex-wrap: wrap; justify-content: center;
+             gap: 0.75rem; /* gap-3 */
+        }
+        .filter-button {
+            display: inline-block; padding: 0.6rem 1.25rem;
+            background-color: var(--bg-filter-button); color: var(--text-filter-button);
+            border-radius: 9999px; text-decoration: none;
+            font-weight: 500; font-size: 0.875rem;
+            transition: all 0.2s ease; border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .filter-button:hover { background-color: var(--bg-filter-button-hover); color: var(--text-filter-button-hover); }
+        .filter-button.active {
+            background-color: var(--bg-filter-button-active); color: var(--text-filter-button-active);
+            border-color: var(--border-filter-button-active); box-shadow: 0 2px 5px rgba(5, 191, 247, 0.2);
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr); gap: 1.5rem; margin-top: 3rem; /* Added margin-top */
+        }
+        @media (min-width: 640px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1280px) { .portfolio-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .portfolio-item {
+            position: relative; overflow: hidden; border-radius: 0.5rem;
+            cursor: pointer; background-color: var(--bg-secondary); /* Use variable */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 1px solid var(--border-primary); /* Use variable */
+            display: none; /* Initially hide all items */
+        }
+        .portfolio-item:hover { transform: translateY(-4px); box-shadow: 0 8px 25px var(--shadow-color); }
+        .portfolio-item img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; transition: transform 0.4s ease; }
+        .portfolio-item:hover img { transform: scale(1.05); }
+        .portfolio-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 60%); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .portfolio-item:hover .portfolio-item-overlay { opacity: 1; }
+        .overlay-icon { color: rgba(255, 255, 255, 0.9); font-size: 3rem; background-color: rgba(0, 0, 0, 0.3); border-radius: 50%; width: 5rem; height: 5rem; display: flex; align-items: center; justify-content: center; transform: scale(0.8); transition: transform 0.3s ease; }
+        .portfolio-item:hover .overlay-icon { transform: scale(1); }
+
+        /* --- Industry Navigation Section (Refined Cards) --- */
+        .industry-nav-card {
+            display: block; background-color: var(--bg-card); border: 1px solid var(--border-industry-card);
+            border-radius: 0.5rem; text-decoration: none;
+            transition: all 0.3s ease; padding: 2rem; /* Increased padding */
+            text-align: center;
+        }
+        .industry-nav-card:hover {
+            transform: translateY(-5px); box-shadow: 0 10px 20px var(--shadow-color);
+            border-color: var(--border-industry-card-hover); /* Accent border on hover */
+        }
+        .industry-nav-icon { /* Added icon */
+            font-size: 2rem; /* text-3xl */ color: var(--accent-color); /* Accent */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .industry-nav-card h3 {
+            font-size: 1.25rem; /* text-xl */ font-weight: 600; color: var(--text-industry-title);
+            margin-bottom: 0.25rem; /* mb-1 */
+        }
+        .industry-nav-card p {
+            font-size: 0.875rem; color: var(--text-industry-desc);
+        }
+
+        /* Modal Styles (Consistent) */
+        .modal { background-color: rgba(31, 41, 55, 0.9); } /* gray-800/90 */
+        html.dark .modal { background-color: rgba(17, 24, 39, 0.95); } /* gray-900/95 */
+        .modal-close-instruction { color: #9ca3af; } /* gray-400 */
+
+        /* --- Scroll Animation Styling --- */
+        .scroll-animate { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .scroll-animate.active { opacity: 1; transform: translateY(0); }
+        .scroll-animate-stagger > * { transition-delay: calc(var(--stagger-index, 0) * 100ms); }
+
+         /* --- Dark Mode Toggle --- */
+         #darkModeToggle {
+            position: fixed;
+            bottom: 1.5rem; /* bottom-6 */
+            left: 1.5rem; /* left-6 */
+            z-index: 100;
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-primary);
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.5rem; /* p-2 */
+            box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* shadow-md */
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        #darkModeToggle:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        #darkModeToggle .fa-sun { display: none; } /* Hide sun by default */
+        html.dark #darkModeToggle .fa-sun { display: inline-block; } /* Show sun in dark mode */
+        html.dark #darkModeToggle .fa-moon { display: none; } /* Hide moon in dark mode */
+
+        /* General Section Backgrounds/Borders */
+        .bg-white { background-color: var(--bg-primary); }
+        .bg-gray-50 { background-color: var(--bg-secondary); }
+        .border-b { border-bottom-color: var(--border-primary); }
+        .border-t { border-top-color: var(--border-primary); }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="fixed top-4 left-8 z-50 flex items-center h-12"> <a href="index.html#home" class="logo-link">
+            <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/150x48/ffffff/374151?text=Logo';">
+        </a>
+    </div>
+
+    <header id="main-header" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-auto max-w-[95%] lg:max-w-6xl xl:max-w-7xl backdrop-blur-md shadow-lg rounded-3xl overflow-hidden">
+        <nav id="main-nav-container" class="container mx-auto py-1 flex items-center justify-center relative h-12"> <div class="hidden md:flex">
+                <ul id="desktop-nav-links" class="main-nav flex items-center">
+                    <li><a href="index.html#home" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Home</a></li>
+                    <li><a href="portfolio.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 inline-flex items-center whitespace-nowrap">
+                            Media Services <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu"> <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 inline-flex items-center whitespace-nowrap">
+                            Who We Work With <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu"> <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li>
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="nav-link px-2 py-1 rounded-md text-xs lg:text-sm font-medium transition duration-200 whitespace-nowrap">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="md:hidden absolute right-1 top-1/2 -translate-y-1/2">
+                <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-800 focus:outline-none p-1.5">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div id="submenu-display-area">
+            </div>
+
+         <div class="md:hidden hidden" id="mobile-menu-container">
+            <ul class="px-4 pt-2 pb-4 space-y-1">
+                 <li><a href="index.html#home" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Home</a></li>
+                <li><a href="portfolio.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Portfolio</a></li>
+                <li><a href="media-services.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Media Services</a></li>
+                <li><a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">About Us</a></li>
+                <li><a href="who-we-work-with.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Who We Work With</a></li>
+                <li><a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium transition duration-200">Contact Us</a></li>
+                 <li><a href="contact.html" class="mt-3 block w-full text-center button-primary button-base text-white px-4 py-2.5 rounded-full text-base font-semibold transition duration-300 button-hover-effect">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="fixed top-4 right-8 z-50 hidden md:flex items-center h-12"> <a href="contact.html" class="header-cta-button button-primary button-base text-white px-3 rounded-full text-xs lg:text-sm font-semibold button-hover-effect shadow-md whitespace-nowrap h-full flex items-center">Tell Your Story</a>
+    </div>
+
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <main>
+        <section class="bg-primary py-16 md:py-24 text-center border-b mt-20">
+            <div class="container mx-auto px-6">
+                 <span class="text-sm font-semibold text-accent-color uppercase tracking-wider">Our Work</span>
+                <h1 class="text-4xl md:text-5xl font-bold mt-2 mb-4">Portfolio Showcase</h1>
+                <p class="text-lg text-primary max-w-3xl mx-auto">Explore a selection of projects demonstrating our creativity, technical skill, and commitment to delivering exceptional results across various industries and media types.</p>
+            </div>
+        </section>
+
+        <section id="portfolio-content" class="py-16 md:py-24 bg-secondary">
+             <div class="container mx-auto px-6">
+                <div class="flex flex-col items-center gap-8 mb-12">
+                    <div class="relative toggle-switch" id="media-type-toggle" data-active="video">
+                        <div class="toggle-slider"></div>
+                        <span class="toggle-label active" data-type="video">Videos</span>
+                        <span class="toggle-label" data-type="photo">Photos</span>
+                    </div>
+
+                    <div class="portfolio-filter-group" id="category-filters">
+                        <button type="button" class="filter-button active" data-filter="highlights" data-group="category">Highlights</button>
+                        <button type="button" class="filter-button" data-filter="weddings" data-group="category">Weddings</button>
+                        <button type="button" class="filter-button" data-filter="real-estate" data-group="category">Real Estate</button>
+                        <button type="button" class="filter-button" data-filter="events" data-group="category">Events</button>
+                        <button type="button" class="filter-button" data-filter="corporate" data-group="category">Corporate</button>
+                        <button type="button" class="filter-button" data-filter="construction" data-group="category">Construction</button>
+                        <button type="button" class="filter-button" data-filter="agriculture" data-group="category">Agriculture</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-youtube-id="DjYheW-cGJc" data-category="highlights weddings" data-type="video">
+                        <img src="assets/images/portfolio/DjYheW-cGJc.jpg" alt="Wedding Highlight Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="d-ui15UJ6no" data-category="highlights weddings" data-type="video">
+                        <img src="assets/images/portfolio/d-ui15UJ6no.jpg" alt="Wedding Film" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="hUK59BW-Xng" data-category="highlights real-estate" data-type="video">
+                        <img src="assets/images/portfolio/hUK59BW-Xng.jpg" alt="Real Estate Video Tour" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="eNuqvCkzSOc" data-category="highlights real-estate" data-type="video">
+                        <img src="assets/images/portfolio/eNuqvCkzSOc.jpg" alt="Property Showcase Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="EI_-cUkJECQ" data-category="highlights events" data-type="video">
+                         <img src="assets/images/portfolio/EI_-cUkJECQ.jpg" alt="Event Highlight Reel" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="IVnIecXA6wk" data-category="highlights events" data-type="video">
+                         <img src="assets/images/portfolio/IVnIecXA6wk.jpg" alt="Conference Coverage Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-youtube-id="MdX4dizw07g" data-category="highlights corporate" data-type="video">
+                         <img src="assets/images/portfolio/MdX4dizw07g.jpg" alt="Corporate Brand Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="pQDLVEb2E7Y" data-category="highlights corporate" data-type="video">
+                         <img src="assets/images/portfolio/pQDLVEb2E7Y.jpg" alt="Company Profile Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="sTp4IaxKIaA" data-category="highlights construction" data-type="video">
+                         <img src="assets/images/portfolio/sTp4IaxKIaA.jpg" alt="Construction Progress Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="w7KDRV9QAIA" data-category="highlights construction" data-type="video">
+                         <img src="assets/images/portfolio/w7KDRV9QAIA.jpg" alt="Construction Site Drone Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="YqjP2sBGTUw" data-category="highlights weddings" data-type="video">
+                         <img src="assets/images/portfolio/YqjP2sBGTUw.jpg" alt="Wedding Cinematic Film" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                    <div class="portfolio-item" data-youtube-id="Z1u4WpysITs" data-category="highlights weddings" data-type="video">
+                         <img src="assets/images/portfolio/Z1u4WpysITs.jpg" alt="Emotional Wedding Video" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/a0aec0/ffffff?text=Video+Error'">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-youtube-id="placeholder_agri_1" data-category="agriculture" data-type="video">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Agri+Video+1" alt="Agriculture Video 1" class="w-full h-auto object-cover">
+                         <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-youtube-id="placeholder_agri_2" data-category="agriculture" data-type="video">
+                         <img src="https://placehold.co/600x400/a0aec0/ffffff?text=Agri+Video+2" alt="Agriculture Video 2" class="w-full h-auto object-cover">
+                          <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-play"></i></span></div>
+                    </div>
+
+                    <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_wedding_1.jpg" data-category="weddings" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Wedding+Photo+1" alt="Wedding Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_event_1.jpg" data-category="events" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Event+Photo+1" alt="Event Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_corporate_1.jpg" data-category="corporate" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Corporate+Headshot" alt="Corporate Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_realestate_1.jpg" data-category="real-estate" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Real+Estate+Photo+1" alt="Real Estate Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_construction_1.jpg" data-category="construction" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Construction+Photo+1" alt="Construction Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_agri_1.jpg" data-category="agriculture" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Agriculture+Photo+1" alt="Agriculture Photo Example 1" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+                     <div class="portfolio-item" data-photo-src="assets/images/portfolio/photo_wedding_2.jpg" data-category="highlights weddings" data-type="photo">
+                        <img src="https://placehold.co/600x400/f0f9ff/374151?text=Wedding+Photo+2" alt="Wedding Photo Example 2" class="w-full h-auto object-cover">
+                        <div class="portfolio-item-overlay"><span class="overlay-icon"><i class="fas fa-search-plus"></i></span></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="explore-industries" class="py-16 md:py-24 bg-primary border-t">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Explore Our Work by Industry</h2>
+                <p class="text-lg text-primary mb-10 max-w-2xl mx-auto">Learn more about our specialized services and see examples tailored to specific sectors.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <a href="weddings.html" class="industry-nav-card">
+                        <div class="p-6"> <div class="industry-nav-icon"><i class="fas fa-heart"></i></div>
+                            <h3>Weddings</h3>
+                            <p>Capturing timeless moments.</p>
+                        </div>
+                    </a>
+                     <a href="real-estate.html" class="industry-nav-card">
+                         <div class="p-6">
+                             <div class="industry-nav-icon"><i class="fas fa-home"></i></div>
+                            <h3>Real Estate</h3>
+                            <p>Showcasing properties effectively.</p>
+                        </div>
+                    </a>
+                     <a href="events.html" class="industry-nav-card">
+                         <div class="p-6">
+                             <div class="industry-nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <h3>Events</h3>
+                            <p>Dynamic coverage for any occasion.</p>
+                        </div>
+                    </a>
+                    <a href="corporate.html" class="industry-nav-card">
+                         <div class="p-6">
+                             <div class="industry-nav-icon"><i class="fas fa-briefcase"></i></div>
+                            <h3>Corporate</h3>
+                            <p>Professional media for your brand.</p>
+                        </div>
+                    </a>
+                     <a href="construction.html" class="industry-nav-card">
+                         <div class="p-6">
+                             <div class="industry-nav-icon"><i class="fas fa-hard-hat"></i></div>
+                            <h3>Construction</h3>
+                            <p>Documenting progress visually.</p>
+                        </div>
+                    </a>
+                     <a href="agriculture.html" class="industry-nav-card">
+                         <div class="p-6">
+                            <div class="industry-nav-icon"><i class="fas fa-tractor"></i></div>
+                            <h3>Agriculture</h3>
+                            <p>Telling the story of modern farming.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-cta" class="bg-secondary py-16 md:py-20 border-t">
+            <div class="container mx-auto px-6 text-center scroll-animate">
+                <h2 class="text-3xl font-bold mb-4">Inspired by Our Work?</h2>
+                <p class="text-lg text-primary mb-8 max-w-xl mx-auto">Let's discuss how we can bring this level of quality and creativity to your next project. Contact us for a personalized quote.</p>
+                <a href="contact.html" class="inline-block button-primary button-base text-white px-8 py-3 rounded-full text-lg font-semibold button-hover-effect">Start Your Project Today</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 border-t">
+        <div class="container mx-auto px-6 text-center text-sm">
+            <p>© 2025 BVisionsMedia. All rights reserved.</p>
+             <div class="mt-3 text-xs">
+                 <a href="#" class="mx-2">Privacy Policy</a> |
+                 <a href="#" class="mx-2">Terms of Service</a>
+             </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-player-wrapper rounded-lg">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button'); // Use ID selector
+        const mobileMenuContainer = document.getElementById('mobile-menu-container'); // Use the new ID
+        if (mobileMenuButton && mobileMenuContainer) {
+            mobileMenuButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const isHidden = mobileMenuContainer.classList.toggle('hidden');
+                mobileMenuButton.innerHTML = isHidden
+                   ? '<i class="fas fa-bars text-lg"></i>'
+                   : '<i class="fas fa-times text-lg"></i>';
+            });
+
+            // Close mobile menu if clicking outside
+            document.addEventListener('click', (event) => {
+                const header = mobileMenuButton.closest('header');
+                if (!mobileMenuContainer.classList.contains('hidden') && header && !header.contains(event.target)) {
+                    mobileMenuContainer.classList.add('hidden');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                }
+            });
+
+            // Close mobile menu when a link inside it is clicked
+            mobileMenuContainer.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuContainer.classList.add('hidden');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars text-lg"></i>';
+                });
+            });
+        }
+
+        // --- Expanding Header Logic ---
+        const mainHeader = document.getElementById('main-header');
+        const submenuDisplayArea = document.getElementById('submenu-display-area');
+        const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children');
+        const desktopNavLinks = document.getElementById('desktop-nav-links'); // Get the UL
+        let closeHeaderTimeout; // Timer for closing the header
+
+        // Icon mapping (Ensure this covers all submenu items)
+        const iconMap = {
+            'photography-services.html': 'fa-camera-retro',
+            'video-production-services.html': 'fa-video',
+            'short-form-videos.html': 'fa-mobile-alt',
+            'drone-video-photography.html': 'fa-helicopter',
+            'social-media-management.html': 'fa-share-alt',
+            'strategic-media-consulting.html': 'fa-lightbulb',
+            'brand-storytelling.html': 'fa-book-open',
+            'digital-ads.html': 'fa-bullhorn',
+            'weddings.html': 'fa-ring',
+            'events.html': 'fa-calendar-alt',
+            'real-estate.html': 'fa-home',
+            'corporate.html': 'fa-building',
+            'construction.html': 'fa-hard-hat',
+            'agriculture.html': 'fa-tractor'
+        };
+
+
+        if (mainHeader && submenuDisplayArea && menuItemsWithChildren.length > 0 && desktopNavLinks) { // Check desktopNavLinks exists
+
+            // Function to open/populate the submenu area
+            const openSubmenu = (menuItem) => {
+                clearTimeout(closeHeaderTimeout); // Cancel any pending close timer
+                mainHeader.classList.add('header-expanded'); // Expand header height
+
+                const subMenuUl = menuItem.querySelector('.sub-menu');
+                if (!subMenuUl) return; // Should not happen, but safety check
+
+                const links = subMenuUl.querySelectorAll('a');
+                submenuDisplayArea.innerHTML = ''; // Clear previous content
+
+                if (links.length > 0) {
+                    const gridContainer = document.createElement('div');
+                    // Determine grid columns based on parent link
+                    const parentLinkHref = menuItem.querySelector('a.nav-link').getAttribute('href');
+                    const gridColsClass = parentLinkHref === 'who-we-work-with.html' ? 'grid-cols-3' : 'grid-cols-4';
+                    gridContainer.className = `submenu-grid ${gridColsClass}`; // Apply grid styles
+
+                    links.forEach(link => {
+                        const linkHref = link.getAttribute('href');
+                        const linkText = link.textContent;
+                        const iconClass = iconMap[linkHref] || 'fa-question-circle'; // Default icon
+
+                        // Create the card structure within the link
+                        const cardLink = document.createElement('a');
+                        cardLink.href = linkHref;
+                        cardLink.className = 'submenu-card'; // Apply card styles
+
+                        const iconElement = document.createElement('i');
+                        iconElement.className = `fas ${iconClass}`; // Add Font Awesome classes
+
+                        const textElement = document.createElement('span');
+                        textElement.textContent = linkText;
+
+                        cardLink.appendChild(iconElement);
+                        cardLink.appendChild(textElement);
+
+                        gridContainer.appendChild(cardLink);
+                    });
+                    submenuDisplayArea.appendChild(gridContainer);
+                }
+            };
+
+            // Function to start the closing process
+            const startCloseSubmenu = () => {
+                clearTimeout(closeHeaderTimeout); // Clear any existing timer
+                closeHeaderTimeout = setTimeout(() => {
+                    mainHeader.classList.remove('header-expanded');
+                     // Optionally clear the display area after transition
+                     // setTimeout(() => { submenuDisplayArea.innerHTML = ''; }, 300); // Delay clearing to allow fade out
+                }, 200); // Delay closing slightly (e.g., 200ms)
+            };
+
+            // Add listeners to menu items
+            menuItemsWithChildren.forEach(item => {
+                const triggerLink = item.querySelector('a.nav-link'); // Target the main link
+                if (triggerLink) {
+                    triggerLink.addEventListener('mouseenter', () => {
+                        openSubmenu(item);
+                    });
+                    // No mouseleave needed on individual items, handled by header mouseleave
+                }
+            });
+
+            // Add listeners to the header itself
+            mainHeader.addEventListener('mouseenter', () => {
+                clearTimeout(closeHeaderTimeout); // Cancel closing if mouse re-enters
+            });
+
+            mainHeader.addEventListener('mouseleave', () => {
+                startCloseSubmenu(); // Start the timer to close
+            });
+        }
+
+
+        // --- Modal Handling ---
+        const videoModal = document.getElementById('videoModal');
+        const portfolioItems = document.querySelectorAll('.portfolio-item'); // Re-select on this page
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+
+        function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none';
+                videoModal.classList.remove('flex');
+                if (modalPlayerContainer) {
+                     const iframe = modalPlayerContainer.querySelector('iframe');
+                    if (iframe) iframe.src = '';
+                    modalPlayerContainer.innerHTML = '';
+                }
+            }
+            // Add logic to close photo lightbox if implemented
+        }
+
+        function openVideoModal(youtubeId) {
+            if (youtubeId && !youtubeId.startsWith('placeholder_') && modalPlayerContainer && videoModal) {
+                 const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+                 modalPlayerContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+                 videoModal.style.display = 'flex';
+                 videoModal.classList.add('flex');
+            } else {
+                 console.log("Invalid YouTube ID for modal:", youtubeId);
+            }
+        }
+
+        // Placeholder for photo lightbox functionality
+        function openPhotoModal(photoSrc) {
+            alert(`Photo clicked: ${photoSrc}. Implement lightbox here.`);
+            // Example: Basic lightbox logic (replace with a library)
+            // const lightbox = document.createElement('div');
+            // lightbox.style.position = 'fixed'; /* ... more styles ... */
+            // lightbox.innerHTML = `<img src="${photoSrc}" style="max-width: 90%; max-height: 90%;">`;
+            // lightbox.onclick = () => document.body.removeChild(lightbox);
+            // document.body.appendChild(lightbox);
+        }
+
+
+        if (portfolioItems.length > 0) {
+            portfolioItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const youtubeId = item.getAttribute('data-youtube-id');
+                    const photoSrc = item.getAttribute('data-photo-src');
+                    const itemType = item.getAttribute('data-type');
+
+                    if (itemType === 'video' && youtubeId) {
+                        openVideoModal(youtubeId);
+                    } else if (itemType === 'photo' && photoSrc) {
+                        openPhotoModal(photoSrc);
+                    }
+                });
+            });
+        }
+
+        if (videoModal) {
+            videoModal.addEventListener('click', (event) => { if (event.target === videoModal) closeModal(); });
+             document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+        }
+
+
+        // --- Portfolio Filtering Logic ---
+        const mediaTypeToggle = document.getElementById('media-type-toggle');
+        const categoryFilterButtons = document.querySelectorAll('#category-filters .filter-button');
+        const gridItems = document.querySelectorAll('.portfolio-grid .portfolio-item');
+        let currentCategoryFilter = 'highlights'; // Default category
+        let currentMediaType = 'video'; // Default type from toggle initial state
+
+        function applyFilters() {
+            gridItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                const itemType = item.getAttribute('data-type');
+
+                const categoryMatch = currentCategoryFilter === 'highlights' || (itemCategory && itemCategory.includes(currentCategoryFilter));
+                const typeMatch = itemType === currentMediaType; // Match the selected type
+
+                if (categoryMatch && typeMatch) {
+                    item.style.display = 'block'; // Show item
+                } else {
+                    item.style.display = 'none'; // Hide item
+                }
+            });
+        }
+
+        // Category Filter Button Listeners
+        categoryFilterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                currentCategoryFilter = e.target.getAttribute('data-filter');
+                categoryFilterButtons.forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                applyFilters();
+            });
+        });
+
+         // Media Type Toggle Listener
+         if (mediaTypeToggle) {
+             mediaTypeToggle.addEventListener('click', (e) => {
+                 // Determine which label was clicked (or the toggle itself)
+                 const clickedLabel = e.target.closest('.toggle-label');
+                 if (!clickedLabel) return; // Ignore clicks not on labels
+
+                 const newType = clickedLabel.getAttribute('data-type');
+                 if (newType !== currentMediaType) {
+                     currentMediaType = newType;
+                     mediaTypeToggle.setAttribute('data-active', newType); // Update toggle state attribute
+
+                     // Update visual active state for labels
+                     mediaTypeToggle.querySelectorAll('.toggle-label').forEach(label => {
+                         label.classList.toggle('active', label.getAttribute('data-type') === newType);
+                     });
+
+                     applyFilters(); // Re-apply filters with the new type
+                 }
+             });
+         }
+
+
+        // --- Scroll Animation & Dark Mode Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Animation
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                         // Optional: Remove active class to re-animate on scroll up
+                         // entry.target.classList.remove('active');
+                    }
+                });
+            };
+
+            const scrollObserver = new IntersectionObserver(observerCallback, observerOptions);
+            const targets = document.querySelectorAll('.scroll-animate');
+            targets.forEach((target, index) => {
+                 if (target.closest('.scroll-animate-stagger')) {
+                     target.style.setProperty('--stagger-index', index);
+                 }
+                 scrollObserver.observe(target);
+            });
+
+            // --- Dark Mode Logic ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const htmlElement = document.documentElement;
+
+            // Function to set theme based on preference
+            const setTheme = (isDark) => {
+                if (isDark) {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Check for saved theme preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                setTheme(true);
+            } else {
+                setTheme(false); // Default to light
+            }
+
+            // Add click listener to the toggle
+            if(darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    setTheme(!htmlElement.classList.contains('dark'));
+                });
+            }
+
+             // Set initial filter on page load (moved inside DOMContentLoaded)
+             document.querySelector(`#category-filters .filter-button[data-filter="${currentCategoryFilter}"]`)?.classList.add('active');
+             document.querySelector(`#media-type-toggle .toggle-label[data-type="${currentMediaType}"]`)?.classList.add('active');
+             mediaTypeToggle?.setAttribute('data-active', currentMediaType); // Ensure visual slider is correct
+             applyFilters(); // Apply default filters
+
+        }); // End DOMContentLoaded
+
+    </script>
+
+</body>
+</html>

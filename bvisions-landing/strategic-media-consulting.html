@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Media Consulting Services - BVisionsMedia</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Base Styling - Inherited */
+        body {
+            font-family: 'Inter', sans-serif; background-color: #ffffff; /* White base */
+            color: #374151; /* Gray-700 */ overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; color: #1f2937; /* Gray-800 */ }
+        .accent-color { color: #05bff7; }
+        .bg-accent-color { background-color: #05bff7; }
+        .border-accent-color { border-color: #05bff7; }
+        .hover\:bg-accent-hover:hover { background-color: #04a6d9; }
+        .hover\:text-accent-hover:hover { color: #04a6d9; }
+        *:focus-visible { outline: 2px solid #05bff7; outline-offset: 2px; border-radius: 2px; }
+        *:focus { outline: none; }
+        html { scroll-behavior: smooth; }
+
+        /* Button Hover Effects */
+        .button-hover-effect { transition: all 0.3s ease; }
+        .button-hover-effect:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
+        .button-secondary-hover-effect { transition: all 0.3s ease; }
+        .button-secondary-hover-effect:hover { background-color: #f0fcff; transform: translateY(-1px); color: #4b5563; }
+
+        /* Header/Nav Dropdown Styles (Consistent) */
+        .main-nav .menu-item-has-children { position: relative; }
+        .main-nav .sub-menu {
+            display: none; position: absolute; left: 0; top: 100%;
+            background-color: #ffffff; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px; z-index: 100; border: 1px solid #e5e7eb;
+            border-radius: 0.375rem; padding: 0.5rem 0; opacity: 0;
+            transform: translateY(10px); transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .main-nav .sub-menu li a { display: block; padding: 0.6rem 1.25rem; color: #374151; white-space: nowrap; font-size: 0.875rem; transition: background-color 0.2s ease, color 0.2s ease; }
+        .main-nav .sub-menu li a:hover { background-color: #f3f4f6; color: #05bff7; }
+
+        /* --- Hero Section Styling --- */
+        .hero-section {
+            position: relative; background-size: cover; background-position: center;
+            min-height: 60vh; display: flex; align-items: center;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.1) 100%); /* Adjusted gradient */
+        }
+        .hero-content { position: relative; z-index: 2; }
+
+        /* --- Service Detail Section Styling --- */
+        .service-detail-section {}
+        .service-detail-section:nth-child(even) { background-color: #f9fafb; /* Gray-50 */ }
+        .service-detail-section:nth-child(odd) { background-color: #ffffff; /* White */ }
+        .service-detail-image { border-radius: 0.5rem; object-fit: cover; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); }
+        .service-detail-title { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.75rem; color: #111827; }
+        .service-detail-description { color: #4b5563; line-height: 1.7; margin-bottom: 1.5rem; }
+        .service-detail-list { list-style: none; padding-left: 0; margin-bottom: 1.5rem; }
+        .service-detail-list li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; color: #374151; font-size: 0.9rem; }
+        .service-detail-list i { color: #05bff7; margin-right: 0.75rem; margin-top: 0.25rem; font-size: 0.8rem; }
+
+        /* --- Process Section Styling --- */
+        .process-step {
+            position: relative;
+            padding-left: 2.5rem; /* Space for icon */
+            padding-bottom: 2rem; /* Space below step */
+            border-left: 2px solid #e5e7eb; /* Gray-200 */
+        }
+         .process-step:last-child {
+             border-left: 2px solid transparent; /* Hide border on last step */
+             padding-bottom: 0;
+         }
+        .process-step-icon {
+            position: absolute;
+            left: -0.75rem; /* Center icon on the line */
+            top: 0;
+            width: 1.5rem; /* w-6 */
+            height: 1.5rem; /* h-6 */
+            background-color: #05bff7; /* Accent */
+            color: white;
+            border-radius: 9999px; /* rounded-full */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 600;
+        }
+         .process-step-title {
+             font-size: 1.125rem; /* text-lg */
+             font-weight: 600;
+             margin-bottom: 0.25rem;
+         }
+         .process-step-description {
+             font-size: 0.9rem;
+             color: #4b5563; /* Gray-600 */
+         }
+
+        /* Modal Styles (Consistent) */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(31, 41, 55, 0.9); align-items: center; justify-content: center; }
+        .modal-content { position: relative; margin: auto; padding: 15px; width: 90%; max-width: 900px; background-color: transparent; border: none; box-shadow: none; }
+        .modal-player-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background-color: #000; border-radius: 0.375rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .modal-player-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .modal-close-instruction { color: #9ca3af; text-align: center; margin-top: 15px; font-size: 0.875rem; }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex items-center relative"> <!-- Removed justify-between, added relative -->
+            <!-- Logo (Absolute Left) -->
+            <div class="absolute left-6 top-1/2 transform -translate-y-1/2">
+                <a href="index.html#home" class="logo-link">
+                    <img src="assets/images/general/logo.png" alt="BVisionsMedia Logo" class="logo h-10 md:h-12 w-auto">
+                </a>
+            </div>
+
+            <!-- Centered Navigation -->
+            <div class="flex-grow flex justify-center"> <!-- Added wrapper div for centering -->
+                <ul class="main-nav hidden md:flex space-x-2 items-center"> <li><a href="index.html#home" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Home</a></li>
+                    <li><a href="portfolio.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Portfolio</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="media-services.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Media Services <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i> </a>
+                        <ul class="sub-menu">
+                            <li><a href="photography-services.html">Photography Services</a></li>
+                            <li><a href="video-production-services.html">Video Production Services</a></li>
+                            <li><a href="short-form-videos.html">Short Form Videos</a></li>
+                            <li><a href="drone-video-photography.html">Drone Video & Photography</a></li>
+                            <li><a href="social-media-management.html">Social Media Management</a></li>
+                            <li><a href="strategic-media-consulting.html">Strategic Media Consulting</a></li>
+                            <li><a href="brand-storytelling.html">Brand Storytelling</a></li>
+                            <li><a href="digital-ads.html">Digital Ads</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">About Us</a></li>
+                    <li class="menu-item-has-children">
+                        <a href="who-we-work-with.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200 inline-flex items-center">
+                            Who We Work With <i class="fas fa-chevron-down text-xs ml-1 opacity-70"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="weddings.html">Weddings</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="real-estate.html">Real Estate</a></li>
+                            <li><a href="corporate.html">Corporate</a></li>
+                            <li><a href="construction.html">Construction</a></li>
+                            <li><a href="agriculture.html">Agriculture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html" class="text-gray-600 hover:text-accent-color px-3 py-2 rounded-md text-sm font-medium transition duration-200">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA Button (Absolute Right) -->
+            <div class="absolute right-6 top-1/2 transform -translate-y-1/2 hidden md:block"> <!-- Hide on mobile -->
+                <a href="contact.html" class="header-cta-button bg-accent-color text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Tell Your Story</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-gray-500 hover:text-gray-800 focus:outline-none ml-auto"> <!-- Use ml-auto to push to right -->
+                <i class="fas fa-bars text-xl"></i> </button>
+        </nav>
+         <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+            <ul class="px-4 pt-2 pb-4 space-y-1">
+                 <li><a href="index.html#home" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Home</a></li>
+                <li><a href="portfolio.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Portfolio</a></li>
+                <li><a href="media-services.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Media Services</a></li>
+                <li><a href="about.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">About Us</a></li>
+                <li><a href="who-we-work-with.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Who We Work With</a></li>
+                <li><a href="contact.html" class="block text-gray-700 hover:bg-gray-100 hover:text-accent-color px-3 py-2 rounded-md text-base font-medium transition duration-200">Contact Us</a></li>
+                <li><a href="contact.html" class="mt-3 block w-full text-center bg-accent-color text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Tell Your Story</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section" style="background-image: url('https://placehold.co/1920x800/e5e7eb/4b5563?text=Strategic+Planning+Session');"> <div class="hero-overlay"></div>
+            <div class="container mx-auto px-6 hero-content">
+                <div class="max-w-lg">
+                    <span class="block text-sm font-semibold text-accent-color uppercase tracking-wider mb-2">Strategic Media Consulting</span> <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 leading-tight">Align Your Media with Your Business Goals</h1> <p class="text-lg text-gray-700 mb-8">Expert guidance to develop data-driven media strategies that maximize impact, optimize spending, and deliver measurable results.</p> <a href="contact.html?subject=Strategic+Consulting+Inquiry" class="inline-block bg-accent-color text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Request a Consultation</a> </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-bold mb-4 text-gray-800">Why Partner with a Media Consultant?</h2> <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10">Navigating the ever-changing social media landscape takes time and expertise. We provide objective insights and expert planning to ensure your media efforts are focused, efficient, and directly contribute to your success.</p> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                     <div class="text-center">
+                         <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-blue-100 text-accent-color"><i class="fas fa-map-signs"></i></div>
+                         <h3 class="text-lg font-semibold mb-1">Clear Direction</h3> <p class="text-sm text-gray-600">Develop a focused roadmap for your media activities.</p>
+                     </div>
+                     <div class="text-center">
+                          <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-blue-100 text-accent-color"><i class="fas fa-dollar-sign"></i></div>
+                         <h3 class="text-lg font-semibold mb-1">Optimize ROI</h3> <p class="text-sm text-gray-600">Ensure your media budget is spent effectively.</p>
+                     </div>
+                     <div class="text-center">
+                          <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-blue-100 text-accent-color"><i class="fas fa-chart-pie"></i></div>
+                         <h3 class="text-lg font-semibold mb-1">Measure Success</h3> <p class="text-sm text-gray-600">Track performance and make data-driven decisions.</p>
+                     </div>
+                 </div>
+            </div>
+        </section>
+
+        <div id="consulting-areas">
+
+            <section class="service-detail-section bg-gray-50 py-16 md:py-20">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="md:order-last">
+                            <img src="https://placehold.co/700x500/f0f9ff/374151?text=Media+Strategy+Blueprint" alt="Media Strategy Development" class="service-detail-image w-full h-auto"> </div>
+                        <div class="md:order-first">
+                            <h3 class="service-detail-title">Media Strategy Development</h3> <p class="service-detail-description">Move beyond ad-hoc tactics. We work with you to define clear objectives, identify target audiences, analyze the competitive landscape, and build a comprehensive media plan that integrates seamlessly with your overall marketing efforts.</p> <ul class="service-detail-list">
+                                <li><i class="fas fa-check-circle"></i> Defining clear, measurable media goals (KPIs).</li>
+                                <li><i class="fas fa-check-circle"></i> Target audience research and persona refinement.</li>
+                                <li><i class="fas fa-check-circle"></i> Channel analysis and selection (social, web, traditional).</li>
+                                <li><i class="fas fa-check-circle"></i> Budget allocation and resource planning.</li>
+                            </ul>
+                             <a href="contact.html?subject=Media+Strategy+Consulting" class="inline-block border border-accent-color text-accent-color px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent-color hover:text-[#4b5563] transition duration-300 button-secondary-hover-effect">Build Your Media Plan</a> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-detail-section bg-white py-16 md:py-20">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <img src="https://placehold.co/700x500/ffffff/374151?text=Content+Calendar+Planning" alt="Content Strategy" class="service-detail-image w-full h-auto"> </div>
+                        <div>
+                            <h3 class="service-detail-title">Content Strategy & Planning</h3> <p class="service-detail-description">Ensure your content resonates and achieves its purpose. We help you develop content pillars, map content to the buyer's journey, plan editorial calendars, and define formats (video, photo, blog) that best suit your audience and platforms.</p> <ul class="service-detail-list">
+                                <li><i class="fas fa-check-circle"></i> Identifying key themes and messaging pillars.</li>
+                                <li><i class="fas fa-check-circle"></i> Content mapping and customer journey alignment.</li>
+                                <li><i class="fas fa-check-circle"></i> Editorial calendar development and workflow suggestions.</li>
+                                <li><i class="fas fa-check-circle"></i> Recommendations for content repurposing across channels.</li>
+                            </ul>
+                             <a href="contact.html?subject=Content+Strategy+Consulting" class="inline-block border border-accent-color text-accent-color px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent-color hover:text-[#4b5563] transition duration-300 button-secondary-hover-effect">Plan Your Content</a> </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-detail-section bg-gray-50 py-16 md:py-20">
+                <div class="container mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                         <div class="md:order-last">
+                            <img src="https://placehold.co/700x500/f0f9ff/374151?text=Media+Performance+Dashboard" alt="Media Performance Analysis" class="service-detail-image w-full h-auto"> </div>
+                        <div class="md:order-first">
+                            <h3 class="service-detail-title">Performance Analysis & Optimization</h3> <p class="service-detail-description">Don't guess what's working – know it. We help you set up tracking, analyze performance data across channels (web analytics, social insights, ad platforms), and provide actionable recommendations to optimize your campaigns and improve ROI.</p> <ul class="service-detail-list">
+                                <li><i class="fas fa-check-circle"></i> Defining key metrics and setting up tracking.</li>
+                                <li><i class="fas fa-check-circle"></i> Analyzing data from Google Analytics, social platforms, etc.</li>
+                                <li><i class="fas fa-check-circle"></i> Identifying high-performing content and channels.</li>
+                                <li><i class="fas fa-check-circle"></i> Regular reporting and optimization recommendations.</li>
+                            </ul>
+                             <a href="contact.html?subject=Media+Analysis+Consulting" class="inline-block border border-accent-color text-accent-color px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-accent-color hover:text-[#4b5563] transition duration-300 button-secondary-hover-effect">Optimize Your Performance</a> </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> <section class="py-16 md:py-24 bg-white border-t border-gray-200">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-4 text-center text-gray-800">Our Consulting Process</h2>
+                <p class="text-lg text-gray-600 mb-12 text-center max-w-2xl mx-auto">We follow a collaborative approach to ensure our strategies align perfectly with your unique needs.</p>
+                <div class="max-w-2xl mx-auto">
+                    <div class="process-step">
+                        <span class="process-step-icon">1</span>
+                        <h4 class="process-step-title">Discovery & Goal Setting</h4>
+                        <p class="process-step-description">We start with a deep dive into your business, objectives, target audience, and current media landscape.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-icon">2</span>
+                        <h4 class="process-step-title">Strategy Development</h4>
+                        <p class="process-step-description">Based on our findings, we craft a tailored media strategy, outlining channels, content approaches, and key metrics.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-icon">3</span>
+                        <h4 class="process-step-title">Implementation Guidance</h4>
+                        <p class="process-step-description">We provide clear recommendations and can assist your team (or our production team) in executing the plan effectively.</p>
+                    </div>
+                    <div class="process-step">
+                        <span class="process-step-icon">4</span>
+                        <h4 class="process-step-title">Analysis & Refinement</h4>
+                        <p class="process-step-description">We help track performance, analyze results, and make data-driven adjustments to continually optimize your strategy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+         <section id="contact-cta" class="bg-gray-50 py-16 md:py-20 border-t border-gray-200"> <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4">Ready to Build a Winning Media Strategy?</h2> <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Let's discuss how strategic media consulting can provide clarity and drive results for your business. Contact us for a consultation.</p> <a href="contact.html?subject=Strategic+Consulting+Quote" class="inline-block bg-accent-color text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent-hover transition duration-300 button-hover-effect">Request Your Consultation</a> </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-100 py-8 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center text-gray-500 text-sm">
+            <p>© 2025 BVisionsMedia. All rights reserved.</p>
+             <div class="mt-3 text-xs text-gray-400">
+                 <a href="#" class="hover:text-gray-600 mx-2">Privacy Policy</a> |
+                 <a href="#" class="hover:text-gray-600 mx-2">Terms of Service</a>
+             </div>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-player-wrapper rounded-lg">
+                <div id="modalVideoPlayer"></div>
+            </div>
+            <p class="modal-close-instruction">Click outside the video to close</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.querySelector('header button.md\\:hidden');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuButton.innerHTML = mobileMenu.classList.contains('hidden')
+                   ? '<i class="fas fa-bars text-xl"></i>'
+                   : '<i class="fas fa-times text-xl"></i>';
+            });
+        }
+
+        // Modal JS (Consistent)
+        const videoModal = document.getElementById('videoModal');
+        const modalPlayerContainer = document.getElementById('modalVideoPlayer');
+         function closeModal() {
+            if (videoModal) {
+                videoModal.style.display = 'none';
+                videoModal.classList.remove('flex');
+                if (modalPlayerContainer) {
+                    modalPlayerContainer.innerHTML = '';
+                }
+            }
+        }
+         if (videoModal) {
+            videoModal.addEventListener('click', (event) => {
+                if (!event.target.closest('.modal-player-wrapper')) {
+                    closeModal();
+                }
+            });
+             document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>
